@@ -12,7 +12,7 @@ module.exports = (() => {
     // entry声明
     let entries = {
         common: ['react', 'react-dom', 'redux', 'react-redux', 'immutable'],
-        main: './client/index.js'
+        main: './client/index.jsx'
     }
 
     // plugin声明
