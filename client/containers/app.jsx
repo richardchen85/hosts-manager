@@ -3,7 +3,7 @@ import { render } from 'react-dom'
 
 import Controls from '../components/controls'
 import Nav from '../components/nav'
-import List from '../components/List'
+import List from '../components/list'
 import Content from '../components/content'
 import Modal from '../components/modal'
 
