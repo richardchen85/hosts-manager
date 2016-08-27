@@ -151,7 +151,8 @@ ul {
     column-width: 16.5rem;
     column-gap: .5rem;
 }
-.ls-list .ls-item {
+.list .ls-item,
+.list .ls-item-add {
     width: 16.5rem;
     display: inline-block;
     border: .1rem solid #ccc;
@@ -161,7 +162,8 @@ ul {
     background: #fff;
     transition: all .2s;
 }
-.ls-list .ls-item:hover {
+.list .ls-item:hover,
+.list .ls-item-add:hover {
     box-shadow: 0 0 5px rgba(0, 0, 0, .3);
 }
 .ls-list .header {
@@ -240,13 +242,13 @@ ul {
     position: relative;
     top: 2px;
 }
-.ls-list .ls-item-add {
+.list .ls-item-add {
     text-align: center;
     font-size:1.4rem;
     background:#e7e7e7;
     cursor: pointer;
 }
-.ls-list .ls-item-btn-add i {
+.list .ls-item-btn-add i {
     position: relative;
     top:2px;
     color: #333;
@@ -282,7 +284,6 @@ ul {
     left:0;
     z-index: 998;
     background: rgba(0,0,0,.5);
-    display: none;
 }
 
 /**
@@ -300,7 +301,6 @@ ul {
     border: 1px solid #333;
     box-shadow: 0 0 15px rgba(0,0,0,.7);
     overflow: hidden;
-    display: none;
 }
 .dialog .header {
     text-align:center;

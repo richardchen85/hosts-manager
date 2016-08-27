@@ -4,7 +4,7 @@ import Immutable, { Map, List } from 'immutable'
 export default function(state = List(), action) {
     switch(action.type) {
         case types.INIT_DATA:
-            return action.data
+            return Immutable.fromJS(action.data)
         case types.PROJECT_ADD:
             return state.push(action.project)
         case types.PROJECT_DELETE:

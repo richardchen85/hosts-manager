@@ -10,6 +10,7 @@
 {
     id: '',
     projectName: '',
+    active: false,
     groups: [
         {
             id: '',
