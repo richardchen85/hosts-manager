@@ -8,8 +8,12 @@ import './components/css/style.css'
 
 import App from './containers/app'
 
+import reducer from './reducers'
+
+let store = createStore(reducer)
+
 render(
-    <Provider className="root">
+    <Provider className="root" store={store}>
         <App />
     </Provider>,
     document.getElementById('root')
