@@ -274,10 +274,22 @@ ul {
 }
 
 /**
+ * mdal styles
+ * ================================================
+ */
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/**
  * mask
  */
 .mask {
-    position: fixed;
+    position: absolute;
     width:100%;
     height:100%;
     top:0;
@@ -290,12 +302,9 @@ ul {
  * dialog
  */
 .dialog {
-    position:absolute;
+    position: relative;
     z-index: 999;
-    width:400px;
-    height:250px;
-    top:20px;
-    left:20px;
+    margin: 100px auto;
     background:#fff;
     border-radius: .5rem;
     border: 1px solid #333;
@@ -316,6 +325,7 @@ ul {
     text-align: right;
     padding-right: .5rem;
     font-size:0;
+    padding-bottom:.5rem;
 }
 .dialog-btn {
     display: inline-block;
@@ -334,4 +344,39 @@ ul {
 }
 .dialog-btn:active {
     background-image: linear-gradient(#e7e7e7, #efefef);
+}
+.dialog .form-group {
+    margin-bottom:.5rem;
+}
+.dialog .form-group .group-header,
+.dialog .form-group .group-control {
+    margin-bottom: .5rem;
+    font-size:1.4rem;
+}
+.dialog .form-group-inline {
+}
+.dialog .form-group-inline .group-header,
+.dialog .form-group-inline .group-control {
+    display:inline-block;
+}
+.dialog .form-group-inline .group-header {
+    padding-right: .5rem;
+}
+.dialog .form-group input,
+.dialog .form-group select,
+.dialog .form-group textarea {
+    outline: none;
+    padding: .5rem;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: .3rem;
+}
+.dialog .form-group input:focus,
+.dialog .form-group select:focus,
+.dialog .form-group textarea:focus {
+    box-shadow: inset 0 0 3px rgba(0,0,0,.3);
+}
+
+.modal-project-addnew input[type=text] {
+    width: 280px;
 }

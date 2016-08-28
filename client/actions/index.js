@@ -19,6 +19,18 @@ export function projectDelete(projIndex) {
         projIndex
     }
 }
+export function projectActive(projIndex) {
+    return {
+        type: types.PROJECT_ACTIVE,
+        projIndex
+    }
+}
+export function projectDialogStatus(status) {
+    return {
+        type: types.PROJECT_DIALOG_STATUS,
+        status
+    }
+}
 
 export function groupAdd(projIndex, group) {
     return {

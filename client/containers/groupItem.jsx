@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
 import Immutable, { Map } from 'immutable'
 
-import ContentEditable from './contenteditable'
+import ContentEditable from '../components/contenteditable'
 
-export default class ListItem extends Component {
+class GroupItem extends Component {
     
     render() {
         let { group, index } = this.props
@@ -46,7 +47,9 @@ export default class ListItem extends Component {
     }
 }
 
-ListItem.propTypes = {
+GroupItem.propTypes = {
     group: PropTypes.instanceOf(Immutable.Map).isRequired,
     index: PropTypes.number.isRequired
 }
+
+export default connect()(GroupItem)

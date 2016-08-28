@@ -2,8 +2,16 @@ import React, { Component, PropTypes } from 'react'
 
 export default class Modal extends Component {
 
+    componentDidMount() {
+        let {
+            width = 400,
+            height
+        } = this.props
+    }
+
     render() {
         let {
+            width = 400,
             title = '',
             btnSubmit = '',
             btnCancel,
@@ -18,7 +26,7 @@ export default class Modal extends Component {
 
             return (
                 <footer className="footer">
-                    <button type="button" className="dialog-btn" onClick={onSubmit}>
+                    <button type="submit" className="dialog-btn">
                         {btnSubmit}
                     </button>
                     <button type="button" className="dialog-btn" onClick={onCancel}>
@@ -28,15 +36,28 @@ export default class Modal extends Component {
             )
         }
 
+        const style = {
+            width: width + 'px'
+        }
+
         return (
             <div className="modal-container">
-                <div className="mask"></div>
-                <div className="dialog">
-                    <header className="header">{title}</header>
-                    <section className="cont">
-                        {this.props.children}
-                    </section>
-                    <Footer {...this.props} />
+                <div className="mask" onClick={onCancel}></div>
+                <div className="dialog" style={style}>
+                    <form
+                        className="modal-project-addnew"
+                        onSubmit={
+                            (e) => {
+                                e.preventDefault()
+                                onSubmit(e.target)
+                            }
+                        }>
+                        <header className="header">{title}</header>
+                        <section className="cont">
+                            {this.props.children}
+                        </section>
+                        <Footer {...this.props} />
+                    </form>
                 </div>
             </div>
         )
