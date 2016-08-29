@@ -8,7 +8,6 @@ import Controls from './controls'
 import Nav from './nav'
 import GroupList from './groupList'
 import Content from '../components/content'
-import AddProjectModal from './addProjectModal'
 
 import { initData } from '../actions'
 import Api from '../api'
@@ -23,10 +22,12 @@ class App extends Component {
     render() {
         let { projects } = this.props
         let currProject = Map()
+        let currIndex
 
-        projects.forEach((project) => {
+        projects.forEach((project, index) => {
             if(project.get('active')) {
                 currProject = project
+                currIndex = index
                 return false
             }
         })
@@ -36,26 +37,21 @@ class App extends Component {
                 <Controls />
                 <div className="main">
                     <Nav projects={projects} />
-                    <GroupList project={currProject} />
+                    <GroupList project={currProject} projIndex={currIndex} />
                     <Content project={currProject} />
                 </div>
-                {this.props.showAddProjModal ?
-                    <AddProjectModal /> : null
-                }
             </div>
         )
     }
 }
 
 App.propTypes = {
-    projects: PropTypes.instanceOf(Immutable.List).isRequired,
-    showAddProjModal: PropTypes.any
+    projects: PropTypes.instanceOf(Immutable.List).isRequired
 }
 
 function mapStateToProps(state) {
     return {
-        projects: state.get('projects'),
-        showAddProjModal: state.get('showAddProjModal')
+        projects: state.get('projects')
     }
 }
 

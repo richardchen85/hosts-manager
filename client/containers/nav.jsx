@@ -34,9 +34,10 @@ class Nav extends Component {
                 <li
                     className={"nav-item" + (project.get('active') ? ' active' : '')}
                     key={index}
-                    onClick={ e => this.handleSelect(index) }
                 >
-                    <span>{project.get('projectName')}</span>
+                    <span onClick={ e => this.handleSelect(index) }>
+                        {project.get('projectName')}
+                    </span>
                     <i className="iconfont nav-item-del" title="删除"
                        onClick={ e => this.handleDelete(index) }>&#xe723;</i>
                 </li>

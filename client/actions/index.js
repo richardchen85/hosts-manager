@@ -25,12 +25,6 @@ export function projectActive(projIndex) {
         projIndex
     }
 }
-export function projectDialogStatus(status) {
-    return {
-        type: types.PROJECT_DIALOG_STATUS,
-        status
-    }
-}
 
 export function groupAdd(projIndex, group) {
     return {
@@ -59,6 +53,13 @@ export function groupEdit(projIndex, groupIndex, group) {
         projIndex,
         groupIndex,
         group
+    }
+}
+export function groupDeEdit(projIndex, groupIndex) {
+    return {
+        type: types.GROUP_DE_EDIT,
+        projIndex,
+        groupIndex
     }
 }
 export function groupActive(projIndex, groupIndex) {

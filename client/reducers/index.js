@@ -18,10 +18,6 @@ export default function(state = Map(), action) {
                 }
             })
             return state.set('projects',projects)
-        case types.PROJECT_DIALOG_STATUS:
-            return state.merge({
-                showAddProjModal: action.status
-            })
         case types.GROUP_ADD:
             return state.mergeIn(
                 ['projects', action.projIndex, 'groups'],
@@ -40,6 +36,11 @@ export default function(state = Map(), action) {
             return state.mergeIn(
                 ['projects', action.projIndex, 'groups', action.groupIndex],
                 Map(action.group)
+            )
+        case types.GROUP_DE_EDIT:
+            return state.setIn(
+                ['projects', action.projIndex, 'groups', action.groupIndex, 'status'],
+                ''
             )
         case types.GROUP_ACTIVE:
             return state.setIn(

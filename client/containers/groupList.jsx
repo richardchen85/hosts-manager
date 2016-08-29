@@ -10,7 +10,7 @@ class GroupList extends Component {
     }
     
     render() {
-        let { project } = this.props
+        let { project, projIndex } = this.props
         let groups = project.get('groups')
 
         if(!groups || groups.size === 0) {
@@ -21,7 +21,7 @@ class GroupList extends Component {
             <div className="list">
                 <ul className="ls-list">
                     {groups.map((group, index) => (
-                        <GroupItem group={group} index={index} key={index} />
+                        <GroupItem group={group} projIndex={projIndex} index={index} key={index} />
                     ))}
                 </ul>
                 <div className="ls-item-add">
@@ -33,7 +33,8 @@ class GroupList extends Component {
 }
 
 GroupList.propTypes = {
-    project: PropTypes.instanceOf(Immutable.Map).isRequired
+    project: PropTypes.instanceOf(Immutable.Map).isRequired,
+    projIndex: PropTypes.number
 }
 
 export default connect()(GroupList)
