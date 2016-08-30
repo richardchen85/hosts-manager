@@ -12,12 +12,6 @@ export default class FormProjectAdd extends Component {
         this.handleChange = this.handleChange.bind(this)
     }
     
-    openModal() {
-        this.setState({
-            isModalOpen: true
-        })
-    }
-    
     handleSubmit() {
         let projectName = this.state.projectName
         if(projectName === '') {
