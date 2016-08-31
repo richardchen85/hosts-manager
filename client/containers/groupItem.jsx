@@ -11,8 +11,6 @@ import {
     groupDeActive
 } from '../actions'
 
-import ContentEditable from '../components/contenteditable'
-
 class GroupItem extends Component {
     constructor(props) {
         super(props)
@@ -28,7 +26,8 @@ class GroupItem extends Component {
         this.handleChange = this.handleChange.bind(this)
     }
     shouldComponentUpdate(nextProps, nextSate) {
-        return !Immutable.is(nextProps.group, this.props.group)
+        return !Immutable.is(nextProps.group, this.props.group) || 
+            nextSate.content !== this.state.content
     }
     
     changeActive(active) {
@@ -80,6 +79,8 @@ class GroupItem extends Component {
             className += ' editing'
         }
 
+        let { content } = this.state
+
         return (
             <li className={className}>
                 <header className="header">
@@ -97,12 +98,20 @@ class GroupItem extends Component {
                             onClick={this.handleDelete}>&#xe723;</i>
                     </div>
                 </header>
-                <ContentEditable
-                    className="cont"
-                    html={this.state.content}
-                    disabled={!editing}
-                    onChange={this.handleChange}
-                />
+                {
+                    editing ?
+                    <textarea
+                        className="cont"
+                        value={content}
+                        onChange={this.handleChange}
+                    /> : 
+                    <div
+                        className="cont"
+                        dangerouslySetInnerHTML={{
+                            __html: content.replace(/\r?\n/g, '<br/>')
+                        }}
+                    />
+                }
                 <footer className="ft">
                     <span className="editing-btn-apply"
                         onClick={this.handleSubmit}>

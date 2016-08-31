@@ -17,6 +17,7 @@ export default class Content extends Component {
         groups && groups.map((group) => {
             content += group.get('content') + '<br/>'
         })
+        content = content.replace(/\r?\n/g, '<br/>')
         return (
             <div className="content">
                 <div className="wrap" dangerouslySetInnerHTML={{__html: content}}/>

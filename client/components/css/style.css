@@ -175,7 +175,8 @@ ul {
 }
 .list .ls-item:hover,
 .list .ls-item-add:hover {
-    box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+    border-color: #faa;
+    background: #fafafa;
 }
 .ls-list .header {
     overflow: hidden;
@@ -226,12 +227,13 @@ ul {
     background: #efefef;
     transition: box-shadow .2s;
 }
-.ls-list .cont[contenteditable=true] {
+.ls-list .editing .cont {
     color: #333;
     background: #fff;
     outline: none;
+    resize: vertical;
 }
-.ls-list .cont[contenteditable=true]:focus {
+.ls-list .editing .cont:focus {
     box-shadow: 0 0 5px rgba(50, 150, 138, .8);
 }
 .ls-list .ft {
@@ -410,7 +412,7 @@ ul {
 }
 .dialog .form-group input,
 .dialog .form-group select,
-.dialog .form-group textarea {
+.dialog .form-group .content {
     outline: none;
     padding: .5rem;
     background: #fff;
@@ -419,15 +421,15 @@ ul {
 }
 .dialog .form-group input:focus,
 .dialog .form-group select:focus,
-.dialog .form-group textarea:focus {
+.dialog .form-group .content:focus {
     box-shadow: inset 0 0 3px rgba(0,0,0,.3);
 }
 
 .modal-project-addnew input[type=text],
-.modal-project-addnew textarea {
+.modal-project-addnew .content {
     width: 280px;
 }
-.modal-project-addnew textarea {
+.modal-project-addnew .content {
     height: 50px;
     resize: vertical;
 }

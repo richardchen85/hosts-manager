@@ -61,7 +61,7 @@ export default class FormGroupAdd extends Component {
                     <dt className="group-header">Content: </dt>
                     <dd className="group-control">
                         <textarea
-                            ref="content"
+                            className="content"
                             name="content"
                             value={this.state.content}
                             onChange={this.handleChange} />

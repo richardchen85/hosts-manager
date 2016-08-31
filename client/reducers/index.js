@@ -18,7 +18,7 @@ export default function(state = Map(), action) {
                 }
             })
             return state.set('projects',projects)
-        case types.GROUP_ADD:console.log(action.group)
+        case types.GROUP_ADD:
             let keyPath = ['projects', action.projIndex, 'groups']
             return state.setIn(
                 keyPath,
