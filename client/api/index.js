@@ -1,8 +1,13 @@
-import data from './data'
+let isTest = !process.env.NODE_ENV
 
 export default {
     getData: function() {
-        return data
+        return isTest ? this.getTestData() : {
+            projects: []
+        }
+    },
+    getTestData: function() {
+        return require('./data.json');
     },
     saveData: function(data) {
         console.log(data)
@@ -14,7 +19,7 @@ export default {
                 let groups = project.groups
                 groups.forEach((group) => {
                     if(group.active) {
-                        content += group.content
+                        content += group.content + '\n'
                     }
                 })
             }
