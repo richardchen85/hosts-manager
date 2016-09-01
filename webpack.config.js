@@ -12,12 +12,13 @@ module.exports = (() => {
     // entry声明
     let entries = {
         common: ['react', 'react-dom', 'redux', 'react-redux', 'immutable'],
-        main: './client/index.jsx'
+        main: debug ? './client/index.test.jsx' : './client/index.jsx'
     }
 
     // plugin声明
     let plugins = [
         new HtmlWebpackPlugin({
+            env: debug ? 'debug' : 'production',
             template: './client/index.html'
         }),
         new ExtractTextPlugin('[name].css'),
@@ -30,7 +31,9 @@ module.exports = (() => {
             'webpack/hot/dev-server',
             'webpack-dev-server/client?http://localhost:3000'
         )
-        plugins.push(new webpack.HotModuleReplacementPlugin())
+        plugins.push(
+            new webpack.HotModuleReplacementPlugin()
+        )
     }
     if(!debug) {
         plugins.push(

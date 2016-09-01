@@ -10,7 +10,6 @@ import GroupList from './groupList'
 import Content from '../components/content'
 
 import { initData } from '../actions'
-import Api from '../api'
 
 class App extends Component {
     componentDidMount() {

@@ -9,7 +9,6 @@ import './components/css/style.css'
 
 import App from './containers/app'
 import reducer from './reducers'
-import Api from './api'
 
 function saveData({ getState }) {
     return (next) => (action) => {

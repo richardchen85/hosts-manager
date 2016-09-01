@@ -6,5 +6,8 @@
 </head>
 <body>
     <div id="root" class="root"></div>
+<% if(htmlWebpackPlugin.options.env !== 'debug') { %>
+    <script src="../electron/data.js"></script>
+<% } %>
 </body>
 </html>

@@ -43,7 +43,7 @@ class GroupList extends Component {
     render() {
         let { project, projIndex } = this.props
         let groups = project.get('groups')
-        
+
         let modal = (
             <Modal
                 clickAway={true}
@@ -60,14 +60,14 @@ class GroupList extends Component {
             </Modal>
         )
 
-        if(!groups || groups.size === 0) {
-            return <div className="list"/>
+        if(project.size === 0) {
+            return <div className="list"></div>
         }
 
         return (
             <div className="list">
                 <ul className="ls-list">
-                    {groups.map((group, index) => (
+                    {groups && groups.map((group, index) => (
                         <GroupItem group={group} projIndex={projIndex} index={index} key={index} />
                     ))}
                 </ul>

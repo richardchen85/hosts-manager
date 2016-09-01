@@ -1,13 +1,6 @@
-let isTest = !process.env.NODE_ENV
-
-export default {
+window.Api = {
     getData: function() {
-        return isTest ? this.getTestData() : {
-            projects: []
-        }
-    },
-    getTestData: function() {
-        return require('./data.json');
+        return require('./data.json')
     },
     saveData: function(data) {
         console.log(data)
