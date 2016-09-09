@@ -1,12 +1,12 @@
 window.Api = {
     getData: function() {
-        return hostsFile.getData()
+        return require('./data.test.json')
     },
     saveData: function(str) {
-        hostsFile.save(str)
+        console.log(str)
     },
     saveJSON: function(json) {
-        hostsFile.saveJSON(json)
+        console.log(json)
     },
     getContent: function(projects) {
         let content = ''

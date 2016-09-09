@@ -7,12 +7,13 @@ let OccurenceOrderPlugin = webpack.optimize.OccurenceOrderPlugin
 let CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin
 
 let debug = process.env.NODE_ENV !== 'production'
+let port = 3030
 
 module.exports = (() => {
     // entry声明
     let entries = {
         common: ['react', 'react-dom', 'redux', 'react-redux', 'immutable'],
-        main: debug ? './client/index.test.jsx' : './client/index.jsx'
+        main: debug ? './client/index.test.js' : './client/index.prod.js'
     }
 
     // plugin声明
@@ -29,7 +30,7 @@ module.exports = (() => {
     if(debug) {
         entries.common.unshift(
             'webpack/hot/dev-server',
-            'webpack-dev-server/client?http://localhost:3000'
+            'webpack-dev-server/client?http://localhost:' + port
         )
         plugins.push(
             new webpack.HotModuleReplacementPlugin()
@@ -78,7 +79,7 @@ module.exports = (() => {
             historyApiFallback: true,
             inline: true,
             hot: true,
-            port: 3000
+            port: port
         }
     }
 

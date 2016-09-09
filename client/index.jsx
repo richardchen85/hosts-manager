@@ -12,15 +12,19 @@ import reducer from './reducers'
 
 function saveData({ getState }) {
     return (next) => (action) => {
-        let before = Api.getContent(getState().get('projects').toJS())
+        let before = getState().get('projects').toJS()
 
         let returnValue = next(action)
 
-        let after = Api.getContent(getState().get('projects').toJS())
+        let afterState = getState().toJS()
+        let afterProjects = afterState.projects
+        let afterContent = Api.getContent(afterProjects)
 
-        if(before !== after) {
-            Api.saveData(after)
+        if(Api.getContent(before) !== afterContent) {
+            Api.saveData(afterContent)
         }
+        
+        Api.saveJSON(JSON.stringify(afterState))
 
         return returnValue
     }

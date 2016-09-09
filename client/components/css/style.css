@@ -159,12 +159,12 @@ ul {
     overflow-y: auto;
 }
 .ls-list {
-    column-width: 16.5rem;
+    column-width: 25rem;
     column-gap: .5rem;
 }
 .list .ls-item,
 .list .ls-item-add {
-    width: 16.5rem;
+    width: 25rem;
     display: inline-block;
     border: .1rem solid #ccc;
     padding: .5rem;
@@ -220,6 +220,7 @@ ul {
     display: none;
 }
 .ls-list .cont {
+    width: 23rem;
     margin: .5rem;
     border: 1px solid #e7e7e7;
     padding: .5rem;
@@ -232,6 +233,7 @@ ul {
     background: #fff;
     outline: none;
     resize: vertical;
+    height: 15rem;
 }
 .ls-list .editing .cont:focus {
     box-shadow: 0 0 5px rgba(50, 150, 138, .8);
