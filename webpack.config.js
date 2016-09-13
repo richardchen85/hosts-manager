@@ -38,7 +38,12 @@ module.exports = (() => {
     }
     if(!debug) {
         plugins.push(
-            new UglifyJsPlugin(),
+            new UglifyJsPlugin({
+                compress: {
+                    warnings: false
+                },
+                sourceMap: false
+            }),
             new OccurenceOrderPlugin(),
             new webpack.DefinePlugin({
                 'process.env': {
