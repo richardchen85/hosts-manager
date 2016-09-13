@@ -12,8 +12,9 @@ let port = 3030
 module.exports = (() => {
     // entry声明
     let entries = {
-        common: ['react', 'react-dom', 'redux', 'react-redux', 'immutable'],
-        main: debug ? './client/index.test.js' : './client/index.prod.js'
+        //common: ['react', 'react-dom', 'redux', 'react-redux', 'immutable'],
+        //lib: './dist/lib.js',
+        main: [debug ? './client/index.test.js' : './client/index.prod.js']
     }
 
     // plugin声明
@@ -23,12 +24,16 @@ module.exports = (() => {
             template: './client/index.html'
         }),
         new ExtractTextPlugin('[name].css'),
-        new CommonsChunkPlugin({
-            name: 'common'
+        // new CommonsChunkPlugin({
+        //     name: 'common'
+        // }),
+        new webpack.DllReferencePlugin({
+            context: __dirname,
+            manifest: require('./manifest.json')
         })
     ]
     if(debug) {
-        entries.common.unshift(
+        entries.main.unshift(
             'webpack/hot/dev-server',
             'webpack-dev-server/client?http://localhost:' + port
         )
