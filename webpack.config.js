@@ -13,7 +13,6 @@ module.exports = (() => {
     // entry声明
     let entries = {
         //common: ['react', 'react-dom', 'redux', 'react-redux', 'immutable'],
-        //lib: './dist/lib.js',
         main: [debug ? './client/index.test.js' : './client/index.prod.js']
     }
 
@@ -62,7 +61,7 @@ module.exports = (() => {
         entry: entries,
         output: {
             path: path.resolve(__dirname, 'dist'),
-            publicPath: null,
+            publicPath: debug ? '/' : '',
             filename: '[name].js'
         },
         resolve: {

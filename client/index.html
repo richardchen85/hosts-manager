@@ -8,7 +8,9 @@
     <div id="root" class="root"></div>
 <% if(htmlWebpackPlugin.options.env !== 'debug') { %>
     <script src="../electron/hostsService.js"></script>
+    <script type="text/javascript" src="lib.min.js"></script>
+<% } else { %>
+    <script type="text/javascript" src="../dist/lib.min.js"></script>
 <% } %>
-<script type="text/javascript" src="lib.js"></script>
 </body>
 </html>
