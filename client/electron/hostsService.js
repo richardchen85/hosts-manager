@@ -8,7 +8,7 @@ if(platform === 'win32') {
     file = path.resolve(process.env.windir, 'system32/drivers/etc/hosts')
 }
 
-let jsonPath = path.resolve(__dirname, '../electron/data.json')
+let jsonPath = path.resolve(__dirname, './electron/data.json')
 
 window.hostsFile = {
     /**

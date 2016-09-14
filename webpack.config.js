@@ -2,6 +2,7 @@ let path = require('path')
 let webpack = require('webpack')
 let HtmlWebpackPlugin = require('html-webpack-plugin')
 let ExtractTextPlugin = require('extract-text-webpack-plugin')
+let CopyWebpackPlugin = require('copy-webpack-plugin')
 let UglifyJsPlugin = webpack.optimize.UglifyJsPlugin
 let OccurenceOrderPlugin = webpack.optimize.OccurenceOrderPlugin
 let CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin
@@ -25,7 +26,19 @@ module.exports = (() => {
         new webpack.DllReferencePlugin({
             context: __dirname,
             manifest: require('./manifest.json')
-        })
+        }),
+        new CopyWebpackPlugin([
+            {
+                from: './client/electron',
+                to: './electron'
+            }, {
+                from: './client/lib',
+                to: './lib'
+            }, {
+                from: './client/package.tmp.json',
+                to: './package.json'
+            }
+        ])
     ]
     if(debug) {
         entries.main.unshift(

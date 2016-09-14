@@ -10,7 +10,7 @@ const vendors = [
 
 module.exports = {
     output: {
-        path: 'dist',
+        path: 'client/lib',
         filename: '[name].min.js',
         library: '[name]'
     },

@@ -2,11 +2,13 @@
   "name": "hosts-manager",
   "version": "0.0.1",
   "description": "一款跨平台的hosts文件管理工具",
+  "main": "./dist/electron/main.js",
   "scripts": {
     "lib": "webpack --config ./webpack.lib.js",
     "start": "webpack-dev-server --no-info --inline --hot",
     "build": "cross-env NODE_ENV=production webpack",
-    "electron": "electron electron/main.js",
+    "electron": "electron ./dist/electron/main.js",
+    "pack": "node ./scripts/pack.js",
     "test": "mocha --compilers js:babel-core/register"
   },
   "repository": {
@@ -29,9 +31,11 @@
     "babel-preset-es2015": "^6.14.0",
     "babel-preset-react": "^6.11.1",
     "chai": "^3.5.0",
+    "copy-webpack-plugin": "^3.0.1",
     "cross-env": "^2.0.0",
     "css-loader": "^0.24.0",
     "electron": "^1.3.4",
+    "electron-packager": "^8.0.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "html-webpack-plugin": "^2.22.0",
     "json-loader": "^0.5.4",
