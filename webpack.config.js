@@ -12,7 +12,6 @@ let port = 3030
 module.exports = (() => {
     // entry声明
     let entries = {
-        //common: ['react', 'react-dom', 'redux', 'react-redux', 'immutable'],
         main: [debug ? './client/index.test.js' : './client/index.prod.js']
     }
 
@@ -23,9 +22,6 @@ module.exports = (() => {
             template: './client/index.html'
         }),
         new ExtractTextPlugin('[name].css'),
-        // new CommonsChunkPlugin({
-        //     name: 'common'
-        // }),
         new webpack.DllReferencePlugin({
             context: __dirname,
             manifest: require('./manifest.json')
@@ -39,8 +35,7 @@ module.exports = (() => {
         plugins.push(
             new webpack.HotModuleReplacementPlugin()
         )
-    }
-    if(!debug) {
+    } else {
         plugins.push(
             new UglifyJsPlugin({
                 compress: {
@@ -84,10 +79,6 @@ module.exports = (() => {
         },
         plugins: plugins,
         devServer: {
-            colors: true,
-            historyApiFallback: true,
-            inline: true,
-            hot: true,
             port: port
         }
     }
