@@ -7,7 +7,6 @@
 ```shell
 # 安装依赖
 npm install
-121
 
 # 编译工具源文件
 npm run build
@@ -37,3 +36,11 @@ npm run pack
     ]
 }
 ```
+
+## changelog
+
+### v0.0.2
+
+* 添加project的名称修改
+* 修复modal的clickAway bug
+* 样式进行一些修改

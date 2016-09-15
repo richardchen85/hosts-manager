@@ -26,6 +26,14 @@ export function projectActive(projIndex) {
     }
 }
 
+export function projectEdit(projIndex, projectName) {
+    return {
+        type: types.PROJECT_EDIT,
+        projIndex,
+        projectName
+    }
+}
+
 export function groupAdd(projIndex, group) {
     return {
         type: types.GROUP_ADD,

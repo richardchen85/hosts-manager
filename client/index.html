@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Hosts manager</title>
-    <script type="text/javascript">
-        window.onerror = function(e) {
-            alert(e)
-        }
-    </script>
 </head>
 <body>
     <div id="root" class="root"></div>
 <% if(htmlWebpackPlugin.options.env !== 'debug') { %>
+    <script type="text/javascript">
+        window.addEventListener('error', function(e) {
+            alert(e)
+        }, false)
+    </script>
     <script src="electron/hostsService.js"></script>
 <% } %>
     <script type="text/javascript" src="lib/lib.min.js"></script>

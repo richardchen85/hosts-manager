@@ -3,6 +3,7 @@ const packager = require('electron-packager')
 packager({
     dir: './dist',
     out: './out',
+    overwrite: true,
     arch: ['ia32', 'x64'],
     platform: ['linux', 'win32', 'darwin'],
     download: 'https://npm.taobao.org/mirrors/electron'

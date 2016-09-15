@@ -98,7 +98,7 @@ class ModalContainer extends Component {
     }
     
     clickAway(event) {
-        if(event.target.className === 'mask') {
+        if(event.target.className === 'modal-inner') {
             event.stopPropagation()
             Pubsub.publish(CLICKAWAY)
         }
@@ -280,15 +280,17 @@ class Modal extends Component {
     }
     
     renderModal(props) {
-        open({
+        let options = {
             id: this.id,
-            content: this.props.children,
-            isOpen: props.isOpen,
-            onClose: props.onClose,
-            header: props.title,
-            width: props.width,
-            buttons: props.buttons
-        })
+            content: props.children,
+            header: props.title
+        }
+        for(let prop in props) {
+            if(props.hasOwnProperty(prop)) {
+                options[prop] = props[prop]
+            }
+        }
+        open(options)
     }
     
     render() {
@@ -307,7 +309,7 @@ Modal.propTypes = {
         PropTypes.element
     ]),
     width: PropTypes.number,
-    buttons: PropTypes.object
+    clickAway: PropTypes.bool
 };
 
 Modal.open = open;

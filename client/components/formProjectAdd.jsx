@@ -2,11 +2,11 @@ import React, { Component, PropTypes } from 'react'
 import Modal from './modal/modal'
 
 export default class FormProjectAdd extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
 
         this.state = {
-            projectName: ''
+            projectName: this.props.projectName || ''
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -65,5 +65,6 @@ export default class FormProjectAdd extends Component {
 }
 
 FormProjectAdd.propTypes = {
+    projectName: PropTypes.string,
     onSubmit: PropTypes.func.isRequired
 }

@@ -17,7 +17,12 @@ export default function(state = Map(), action) {
                     return project.set('active', false)
                 }
             })
-            return state.set('projects',projects)
+            return state.set('projects', projects)
+        case types.PROJECT_EDIT:
+            return state.setIn(
+                ['projects', action.projIndex, 'projectName'],
+                action.projectName
+            )
         case types.GROUP_ADD:
             let keyPath = ['projects', action.projIndex, 'groups']
             return state.setIn(

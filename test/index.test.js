@@ -5,7 +5,7 @@ import Immutable from 'immutable'
 
 import reducer from '../client/reducers'
 import * as actions from '../client/actions'
-import Api from '../client/api'
+import '../client/api/index.test'
 
 let store = createStore(reducer, Immutable.fromJS({
     projects: []
@@ -65,6 +65,16 @@ describe('reducers', function() {
 
         expect(runActive(0)).to.be.equal(0)
         expect(runActive(1)).to.be.equal(1)
+    })
+
+    it('projectEdit', function() {
+        let projectName = 'test edit projectName'
+        let runEdit = function(index, projectName) {
+            store.dispatch(actions.projectEdit(index, projectName))
+            return store.getState().getIn(['projects', index, 'projectName']) === projectName
+        }
+
+        expect(runEdit(0, projectName)).to.be.ok
     })
 
     it('groupAdd', function() {

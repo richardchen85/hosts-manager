@@ -99,7 +99,7 @@ ul {
  * ===============================================
  */
 .nav {
-    width: 13rem;
+    width: 18rem;
     background: #333;
     padding: 1rem 0 1rem 1rem;
 }
@@ -116,7 +116,7 @@ ul {
     display: block;
     width: 100%;
     height: 100%;
-    padding-left: .5rem;
+    padding-left: 2rem;
 }
 .nav-list .nav-item:hover {
     background: rgba(30, 30, 30, .9);
@@ -129,14 +129,20 @@ ul {
     color: #333;
     cursor: default;
 }
+.nav-list .nav-item-edit,
 .nav-list .nav-item-del {
     position: absolute;
     right: 5px;
     top: 0px;
     display: none;
-    font-size: 1rem;
+    font-size: 1.2rem;
     cursor: pointer;
 }
+.nav-list .nav-item-edit {
+    right: auto;
+    left: 5px;
+}
+.nav-list .nav-item:hover .nav-item-edit,
 .nav-list .nav-item:hover .nav-item-del {
     display: block;
 }
@@ -280,7 +286,7 @@ ul {
  * ===============================================
  */
 .content {
-    flex: 2;
+    flex: 2.2;
     height: 100%;
     overflow: hidden;
 }

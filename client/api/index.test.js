@@ -1,11 +1,15 @@
-window.Api = {
+global = typeof window === 'undefined' ? global : window
+
+global.Api = {
     getData: function() {
         return require('./data.test.json')
     },
     saveData: function(str) {
+        console.log('Api.saveData()')
         console.log(str)
     },
     saveJSON: function(json) {
+        console.log('Api.saveJSON()')
         console.log(json)
     },
     getContent: function(projects) {

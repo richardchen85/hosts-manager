@@ -89,7 +89,7 @@ class GroupItem extends Component {
                             onClick={ e => this.changeActive(true) }>&#xe72f;</i>
                         <i className="iconfont i-checked" title="已选择"
                             onClick={ e => this.changeActive(false) }>&#xe731;</i>
-                        <span>[{this.props.index + 1}] {group.get('groupName')}</span>
+                        <span>({this.props.index + 1}) {group.get('groupName')}</span>
                     </h3>
                     <div className="ctrl">
                         <i className="iconfont i-edit" title="修改"
