@@ -18,7 +18,8 @@ npm run pack
 然后你就可以在根目录看到一个新文件夹`out/hosts-manager-xxx-xx`，打开这个文件夹下面的`hosts-manager`就可以执行本工具了。
 
 > 注意
-> OSX和linux系统，需要root权限运行
+
+> OS X和linux系统，需要root权限运行
 
 ## 数据结构
 
