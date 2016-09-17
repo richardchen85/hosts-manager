@@ -65,9 +65,9 @@ class Nav extends Component {
                         {project.get('projectName')}
                     </span>
                     <i className="iconfont nav-item-edit" title="修改"
-                        onClick={ e => this.handleEdit(true, index) }>&#xe738;</i>
+                        onClick={ e => this.handleEdit(true, index) }>&#xe606;</i>
                     <i className="iconfont nav-item-del" title="删除"
-                       onClick={ e => this.handleDelete(index) }>&#xe723;</i>
+                       onClick={ e => this.handleDelete(index) }>&#xe600;</i>
                 </li>
             ))
         )

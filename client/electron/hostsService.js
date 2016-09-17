@@ -1,5 +1,6 @@
 const path = require('path')
 const fs = require('fs')
+const { dialog } = require('electron').remote
 
 let platform = require('os').platform()
 let file = '/etc/hosts'
@@ -53,6 +54,73 @@ window.hostsFile = {
     getData: function() {
         try {
             return JSON.parse(fs.readFileSync(jsonPath))
+        } catch (ex) {
+            alert(ex)
+        }
+    }
+}
+
+// 代理事件绑定
+window.addEventListener('load', function(){
+    document.body.addEventListener('click', function(e) {
+        let elemId = e.target.id
+        // 导入配置
+        if(elemId === 'importBtn') {
+            doImport()
+        } else if(elemId === 'exportBtn') {
+            doExport()
+        }
+    }, false)
+}, false)
+
+// 导入配置
+function doImport() {
+    let filePath = dialog.showOpenDialog({
+        properties: ['openFile'],
+        filters: [
+            {name: 'Json Files', extensions: ['json']},
+            {name: 'All Files', extensions: ['*']}
+        ]
+    })[0]
+
+    if(!filePath) {
+        return
+    }
+
+    let jsonContent
+    try {
+        jsonContent = JSON.parse(fs.readFileSync(filePath))
+    } catch (ex) {
+        alert(ex)
+    }
+
+    // 判断内容格式的正确性
+    if(jsonContent.global && jsonContent.projects && jsonContent.projects instanceof Array) {
+        window.hostsFile.saveJSON(JSON.stringify(jsonContent))
+        window.location.reload()
+    } else {
+        alert('导入失败！\r\n内容格式必须为json，并且包含global（字符串）和projects（数组）两个字段！')
+    }
+}
+
+// 导出配置
+function doExport() {
+    let filePath = dialog.showSaveDialog({
+        properties: ['openFile'],
+        filters: [
+            {name: 'Json Files', extensions: ['json']},
+            {name: 'All Files', extensions: ['*']}
+        ]
+    })
+
+    if(!filePath) {
+        return
+    }
+
+    let json = window.hostsFile.getData()
+    if(json) {
+        try {
+            fs.writeFileSync(filePath, JSON.stringify(json))
         } catch (ex) {
             alert(ex)
         }

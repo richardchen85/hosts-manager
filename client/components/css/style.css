@@ -58,6 +58,9 @@ ul {
 .iconfont {
     cursor: pointer;
 }
+input, textarea {
+    resize: vertical;
+}
 
 /**
  * controls
@@ -440,4 +443,9 @@ ul {
 .modal-project-addnew .content {
     height: 50px;
     resize: vertical;
+}
+
+.modal-global-form .content {
+    width: 250px;
+    height:200px;
 }

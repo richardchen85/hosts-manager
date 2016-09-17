@@ -1,4 +1,5 @@
 {
+  "global": "this is global",
   "projects": [
     {
       "id": "1",

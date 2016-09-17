@@ -158,7 +158,7 @@ class ModalContainer extends Component {
                 >
                     <div className="dialog" style={style}>
                         <a className="dialog-close" onClick={this.close.bind(this, true)}>
-                            <i className="iconfont">&#xe723;</i>
+                            <i className="iconfont">&#xe600;</i>
                         </a>
                         {header}
                         <div className="cont">

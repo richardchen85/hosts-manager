@@ -13,7 +13,7 @@ export default class Content extends Component {
             return group.get('active')
         })
 
-        let content = ''
+        let content = this.props.global + '<br/>'
         groups && groups.map((group) => {
             content += group.get('content') + '<br/>'
         })
@@ -27,5 +27,6 @@ export default class Content extends Component {
 }
 
 Content.propTypes = {
+    global: PropTypes.string.isRequired,
     project: PropTypes.instanceOf(Immutable.Map).isRequired
 }

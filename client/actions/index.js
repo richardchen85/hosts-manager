@@ -7,6 +7,13 @@ export function initData(data) {
     }
 }
 
+export function globalSave(content) {
+    return {
+        type: types.GLOBAL_SAVE,
+        content
+    }
+}
+
 export function projectAdd(project) {
     return {
         type: types.PROJECT_ADD,

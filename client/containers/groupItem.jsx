@@ -86,16 +86,16 @@ class GroupItem extends Component {
                 <header className="header">
                     <h3 className="title">
                         <i className="iconfont i-no-check" title="未选择"
-                            onClick={ e => this.changeActive(true) }>&#xe72f;</i>
+                            onClick={ e => this.changeActive(true) }>&#xe604;</i>
                         <i className="iconfont i-checked" title="已选择"
-                            onClick={ e => this.changeActive(false) }>&#xe731;</i>
+                            onClick={ e => this.changeActive(false) }>&#xe605;</i>
                         <span>({this.props.index + 1}) {group.get('groupName')}</span>
                     </h3>
                     <div className="ctrl">
                         <i className="iconfont i-edit" title="修改"
-                            onClick={ e => this.changeStatus(true) }>&#xe738;</i>
+                            onClick={ e => this.changeStatus(true) }>&#xe606;</i>
                         <i className="iconfont i-del" title="删除"
-                            onClick={this.handleDelete}>&#xe723;</i>
+                            onClick={this.handleDelete}>&#xe600;</i>
                     </div>
                 </header>
                 {
@@ -115,10 +115,10 @@ class GroupItem extends Component {
                 <footer className="ft">
                     <span className="editing-btn-apply"
                         onClick={this.handleSubmit}>
-                        <i className="iconfont">&#xe72e;</i>应用</span>
+                        <i className="iconfont">&#xe603;</i>应用</span>
                     <span className="editing-btn-cancel"
                         onClick={ e => this.changeStatus(false) }>
-                        <i className="iconfont">&#xe729;</i>取消</span>
+                        <i className="iconfont">&#xe602;</i>取消</span>
                 </footer>
             </li>
         )

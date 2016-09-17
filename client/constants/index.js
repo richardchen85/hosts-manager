@@ -1,5 +1,7 @@
 export const INIT_DATA = 'INIT_DATA'
 
+export const GLOBAL_SAVE = 'GLOBAL_SAVE'
+
 export const PROJECT_ADD = 'PROJECT_ADD'
 export const PROJECT_DELETE = 'PROJECT_DELETE'
 export const PROJECT_ACTIVE = 'PROJECT_ACTIVE'

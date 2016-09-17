@@ -72,7 +72,7 @@ class GroupList extends Component {
                     ))}
                 </ul>
                 <div className="ls-item-add" onClick={ e => this.showModal(true) }>
-                    <i className="iconfont">&#xe727;</i>添加
+                    <i className="iconfont">&#xe601;</i>添加
                 </div>
                 {modal}
             </div>

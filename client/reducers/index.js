@@ -5,6 +5,8 @@ export default function(state = Map(), action) {
     switch(action.type) {
         case types.INIT_DATA:
             return Immutable.fromJS(action.data)
+        case types.GLOBAL_SAVE:
+            return state.set('global', action.content)
         case types.PROJECT_ADD:
             return state.set('projects', state.get('projects').push(action.project))
         case types.PROJECT_DELETE:

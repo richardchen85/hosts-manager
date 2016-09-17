@@ -5,7 +5,6 @@ let ExtractTextPlugin = require('extract-text-webpack-plugin')
 let CopyWebpackPlugin = require('copy-webpack-plugin')
 let UglifyJsPlugin = webpack.optimize.UglifyJsPlugin
 let OccurenceOrderPlugin = webpack.optimize.OccurenceOrderPlugin
-let CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin
 
 let debug = process.env.NODE_ENV !== 'production'
 let port = 3030
@@ -35,7 +34,7 @@ module.exports = (() => {
                 from: './client/lib',
                 to: './lib'
             }, {
-                from: './client/package.tmp.json',
+                from: './package.json',
                 to: './package.json'
             }
         ])

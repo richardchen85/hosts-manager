@@ -8,9 +8,9 @@ window.Api = {
     saveJSON: function(json) {
         hostsFile.saveJSON(json)
     },
-    getContent: function(projects) {
-        let content = ''
-        projects.forEach((project) => {
+    getContent: function(state) {
+        let content = state.global + '\n'
+        state.projects.forEach((project) => {
             if(project.active) {
                 let groups = project.groups
                 groups.forEach((group) => {

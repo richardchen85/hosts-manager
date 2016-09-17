@@ -33,11 +33,11 @@ class App extends Component {
 
         return (
             <div className="root">
-                <Controls />
+                <Controls global={this.props.global} />
                 <div className="main">
                     <Nav projects={projects} />
                     <GroupList project={currProject} projIndex={currIndex} />
-                    <Content project={currProject} />
+                    <Content global={this.props.global} project={currProject} />
                 </div>
             </div>
         )
@@ -45,11 +45,13 @@ class App extends Component {
 }
 
 App.propTypes = {
+    global: PropTypes.string.isRequired,
     projects: PropTypes.instanceOf(Immutable.List).isRequired
 }
 
 function mapStateToProps(state) {
     return {
+        global: state.get('global'),
         projects: state.get('projects')
     }
 }

@@ -12,13 +12,12 @@ import reducer from './reducers'
 
 function saveData({ getState }) {
     return (next) => (action) => {
-        let before = getState().get('projects').toJS()
+        let before = getState().toJS()
 
         let returnValue = next(action)
 
         let afterState = getState().toJS()
-        let afterProjects = afterState.projects
-        let afterContent = Api.getContent(afterProjects)
+        let afterContent = Api.getContent(afterState)
 
         if(Api.getContent(before) !== afterContent) {
             Api.saveData(afterContent)
@@ -33,6 +32,7 @@ function saveData({ getState }) {
 let store = createStore(
     reducer,
     Immutable.fromJS({
+        global: "",
         projects: []
     }),
     applyMiddleware(saveData)
