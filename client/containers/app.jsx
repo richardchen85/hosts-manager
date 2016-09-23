@@ -36,7 +36,7 @@ class App extends Component {
                 <Controls global={this.props.global} />
                 <div className="main">
                     <Nav projects={projects} />
-                    <GroupList project={currProject} projIndex={currIndex} />
+                    <GroupList project={currProject} projIndex={currIndex} key={currProject} />
                     <Content global={this.props.global} project={currProject} />
                 </div>
             </div>
