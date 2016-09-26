@@ -9,11 +9,27 @@ export default class FormGlobal extends Component {
             content: this.props.value
         }
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleClose = this.handleClose.bind(this)
         this.handleChange = this.handleChange.bind(this)
     }
+    
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            content: nextProps.value
+        })
+    }
 
-    handleSubmit() {
+    handleSubmit(e) {
+        e.preventDefault()
+        
         this.props.onSubmit(this.state.content)
+    }
+    
+    handleClose() {
+        this.setState({
+            content: ''
+        })
+        this.props.onClose()
     }
 
     handleChange(e) {
@@ -23,21 +39,25 @@ export default class FormGlobal extends Component {
     }
 
     render() {
-        return (
-            <form
-                className="modal-global-form"
-                onSubmit={
-                    (e) => {
-                        e.preventDefault()
-                        this.handleSubmit()
-                    }
-                }
-            >
+        let options = {
+            clickAway: true,
+            width: 400,
+            title: 'Edit global hosts',
+            isOpen: this.props.isOpen,
+            onClose: this.handleClose,
+            buttons: {
+                'Save': 'submit',
+                'Cancel': true
+            }
+        }
+        
+        let form = (
+            <form className="modal-global-form" onSubmit={this.handleSubmit}>
                 <dl className="form-group form-group-inline">
                     <dt className="group-header">Content: </dt>
                     <dd className="group-control">
                         <textarea
-                            autofocus
+                            autoFocus
                             className="content"
                             name="content"
                             value={this.state.content}
@@ -46,10 +66,7 @@ export default class FormGlobal extends Component {
                 </dl>
             </form>
         )
+        
+        return Modal.makeModal(options, form)
     }
-}
-
-FormGlobal.propTypes = {
-    value: PropTypes.string.isRequired,
-    onSubmit: PropTypes.func.isRequired
 }

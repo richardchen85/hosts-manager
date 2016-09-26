@@ -1,5 +1,7 @@
+import Immutable from 'immutable'
 import * as types from '../constants'
 
+// initData
 export function initData(data) {
     return {
         type: types.INIT_DATA,
@@ -7,6 +9,7 @@ export function initData(data) {
     }
 }
 
+// global
 export function globalSave(content) {
     return {
         type: types.GLOBAL_SAVE,
@@ -14,7 +17,14 @@ export function globalSave(content) {
     }
 }
 
-export function projectAdd(project) {
+// project
+export function projectAdd(projectName) {
+    let project = Immutable.fromJS({
+        id: Date.now(),
+        projectName,
+        active: false,
+        groups: []
+    })
     return {
         type: types.PROJECT_ADD,
         project
@@ -32,7 +42,6 @@ export function projectActive(projIndex) {
         projIndex
     }
 }
-
 export function projectEdit(projIndex, projectName) {
     return {
         type: types.PROJECT_EDIT,
@@ -41,11 +50,19 @@ export function projectEdit(projIndex, projectName) {
     }
 }
 
+// group
 export function groupAdd(projIndex, group) {
+    let newGroup = Immutable.fromJS({
+        id: Date.now(),
+        groupName: group.groupName,
+        content: group.content,
+        active: false,
+        status: ''
+    })
     return {
         type: types.GROUP_ADD,
         projIndex,
-        group
+        group: newGroup
     }
 }
 export function groupDelete(projIndex, groupIndex) {

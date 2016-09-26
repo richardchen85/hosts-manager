@@ -10,6 +10,8 @@ import './components/css/style.css'
 import App from './containers/app'
 import reducer from './reducers'
 
+// saveData middleware
+// 当hosts数据改变时，写入hosts文件
 function saveData({ getState }) {
     return (next) => (action) => {
         let before = getState().toJS()

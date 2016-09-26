@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import Immutable, { Map } from 'immutable'
 
 import {
     groupDelete,
@@ -24,10 +23,6 @@ class GroupItem extends Component {
         this.changeStatus = this.changeStatus.bind(this)
         this.handleDelete = this.handleDelete.bind(this)
         this.handleChange = this.handleChange.bind(this)
-    }
-    shouldComponentUpdate(nextProps, nextSate) {
-        return !Immutable.is(nextProps.group, this.props.group) || 
-            nextSate.content !== this.state.content
     }
     
     changeActive(active) {
@@ -68,21 +63,16 @@ class GroupItem extends Component {
     
     render() {
         let { group, index } = this.props
-
-        let className = 'ls-item'
-        let active = group.get('active')
-        let editing = (group.get('status') === 'editing')
-        if(active) {
-            className += ' checked'
-        }
-        if(editing) {
-            className += ' editing'
-        }
-
         let { content } = this.state
 
+        let className = ['ls-item']
+        let active = group.get('active')
+        let editing = group.get('status') === 'editing'
+        active && className.push('checked')
+        editing && className.push('editing')
+
         return (
-            <li className={className}>
+            <li className={className.join(' ')}>
                 <header className="header">
                     <h3 className="title">
                         <i className="iconfont i-no-check" title="未选择"
@@ -123,12 +113,6 @@ class GroupItem extends Component {
             </li>
         )
     }
-}
-
-GroupItem.propTypes = {
-    group: PropTypes.instanceOf(Immutable.Map).isRequired,
-    projIndex: PropTypes.number.isRequired,
-    index: PropTypes.number.isRequired
 }
 
 export default connect()(GroupItem)

@@ -250,6 +250,10 @@ function createContainer() {
     render(<ModalContainer />, modalContainer)
 }
 
+function makeModal(options, component) {
+    return <Modal {...options}>{component}</Modal>
+}
+
 /**
  * modal
  * ================================================
@@ -316,5 +320,6 @@ Modal.open = open;
 Modal.alert = alert;
 Modal.confirm = confirm;
 Modal.close = close;
+Modal.makeModal = makeModal;
 
 module.exports = Modal;

@@ -1,18 +1,18 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import Immutable, { List } from 'immutable'
 
 import Modal from '../components/modal/modal'
+import NavList from '../components/navList'
 import FormProjectAdd from '../components/formProjectAdd'
 
 import { projectDelete, projectActive, projectEdit } from '../actions'
 
 class Nav extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
 
         this.state = {
-            isModalOpen: false,
+            modalVisible: false,
             editProjectIndex: null
         }
 
@@ -21,10 +21,11 @@ class Nav extends Component {
         this.handleEdit = this.handleEdit.bind(this)
         this.handleEditSubmit = this.handleEditSubmit.bind(this)
     }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return !Immutable.is(nextProps.projects, this.props.projects) ||
-            !Immutable.is(nextState, this.state)
+    
+    setModalVisible(visible) {
+        this.setState({
+            modalVisible: visible
+        })
     }
 
     handleDelete(projectIndex) {
@@ -41,7 +42,7 @@ class Nav extends Component {
 
     handleEdit(isOpen, projectIndex) {
         this.setState({
-            isModalOpen: isOpen,
+            modalVisible: isOpen,
             editProjectIndex: projectIndex
         })
     }
@@ -55,54 +56,29 @@ class Nav extends Component {
 
     render() {
         let { projects } = this.props
-        let lists = (projects) => (
-            projects.map((project, index) => (
-                <li
-                    className={"nav-item" + (project.get('active') ? ' active' : '')}
-                    key={index}
-                >
-                    <span onClick={ e => this.handleSelect(index) }>
-                        {project.get('projectName')}
-                    </span>
-                    <i className="iconfont nav-item-edit" title="修改"
-                        onClick={ e => this.handleEdit(true, index) }>&#xe606;</i>
-                    <i className="iconfont nav-item-del" title="删除"
-                       onClick={ e => this.handleDelete(index) }>&#xe600;</i>
-                </li>
-            ))
-        )
-
         let editProjectName = projects.getIn([this.state.editProjectIndex, 'projectName'])
-        let modal = (
-            <Modal
-                clickAway={true}
-                width={400}
-                title="Edit project"
-                isOpen={this.state.isModalOpen}
-                buttons={{
-                    'Edit Project': 'submit',
-                    'Cancel': true
-                }}
-            >
-                <FormProjectAdd
-                    projectName={editProjectName}
-                    onSubmit={this.handleEditSubmit}/>
-            </Modal>
-        )
 
         return (
             <div className="nav">
-                <ul className="nav-list">
-                    {lists(projects)}
-                </ul>
-                {modal}
+                <NavList
+                    projects={projects}
+                    handleSelect={this.handleSelect}
+                    handleEdit={this.handleEdit}
+                    handleDelete={this.handleDelete}/>
+                <FormProjectAdd
+                    isOpen={this.state.modalVisible}
+                    onClose={e => this.setModalVisible(false)}
+                    projectName={editProjectName}
+                    onSubmit={this.handleEditSubmit}/>
             </div>
         )
     }
 }
 
-Nav.propTypes = {
-    projects: PropTypes.instanceOf(Immutable.List).isRequired
+function mapStateToProps(state) {
+    return {
+        projects: state.get('projects')
+    }
 }
 
-export default connect()(Nav)
+export default connect(mapStateToProps)(Nav)

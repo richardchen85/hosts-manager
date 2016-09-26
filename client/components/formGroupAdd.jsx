@@ -2,8 +2,8 @@ import React, { Component, PropTypes } from 'react'
 import Modal from './modal/modal'
 
 export default class FormGroupAdd extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
 
         this.state = {
             groupName: '',
@@ -11,16 +11,19 @@ export default class FormGroupAdd extends Component {
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
+        this.handleClose = this.handleClose.bind(this)
     }
     
-    handleSubmit() {
+    handleSubmit(e) {
+        e.preventDefault()
+        
         let { groupName, content } = this.state
         if(groupName === '') {
             Modal.alert('Group name can not be empty !')
         } else if(content === '') {
             Modal.alert('Group content can not be empty !')
         } else {
-            this.props.onSubmit(groupName, content)
+            this.props.onSubmit(this.props.projIndex, groupName, content)
         }
     }
     
@@ -30,29 +33,40 @@ export default class FormGroupAdd extends Component {
         })
     }
     
-    componentDidMount() {
-        this.refs.groupName.focus()
+    handleClose() {
+        this.setState({
+            groupName: '',
+            content: ''
+        })
+        this.props.onClose()
     }
 
     render() {
-        return (
+        let options = {
+            clickAway: true,
+            width: 400,
+            title: "Add new group",
+            isOpen: this.props.isOpen,
+            onClose: this.handleClose,
+            buttons: {
+                'Add Group': 'submit',
+                'Cancel': true
+            }
+        }
+        
+        let form = (
             <form
+                ref="formAddGroup"
                 className="modal-project-addnew"
-                onSubmit={
-                    (e) => {
-                        e.preventDefault()
-                        this.handleSubmit()
-                    }
-                }
-            >
+                onSubmit={this.handleSubmit}>
                 <dl className="form-group form-group-inline">
                     <dt className="group-header">Group Name: </dt>
                     <dd className="group-control">
                         <input
-                            ref="groupName"
                             type="text"
                             name="groupName"
                             autoComplete="off"
+                            autoFocus
                             value={this.state.groupName}
                             onChange={this.handleChange} />
                     </dd>
@@ -69,9 +83,7 @@ export default class FormGroupAdd extends Component {
                 </dl>
             </form>
         )
+        
+        return Modal.makeModal(options, form)
     }
-}
-
-FormGroupAdd.propTypes = {
-    onSubmit: PropTypes.func.isRequired
 }

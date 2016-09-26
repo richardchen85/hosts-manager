@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import Modal from './modal/modal'
 
 export default class FormProjectAdd extends Component {
@@ -6,14 +6,25 @@ export default class FormProjectAdd extends Component {
         super(props)
 
         this.state = {
+            isEdit: !!this.props.projectName,
             projectName: this.props.projectName || ''
         }
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleClose = this.handleClose.bind(this)
         this.handleChange = this.handleChange.bind(this)
     }
     
-    handleSubmit() {
-        let projectName = this.state.projectName
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            isEdit: !!nextProps.projectName,
+            projectName: nextProps.projectName || ''
+        })
+    }
+    
+    handleSubmit(e) {
+        e.preventDefault()
+        
+        let { projectName } = this.state
         if(projectName === '') {
             Modal.open({
                 width: 300,
@@ -22,8 +33,15 @@ export default class FormProjectAdd extends Component {
                 buttons: {'确定': true}
             })
         } else {
-            this.props.onSubmit(this.state.projectName)
+            this.props.onSubmit(projectName)
         }
+    }
+    
+    handleClose() {
+        this.setState({
+            projectName: ''
+        })
+        this.props.onClose()
     }
     
     handleChange(e) {
@@ -31,40 +49,36 @@ export default class FormProjectAdd extends Component {
             projectName: e.target.value
         })
     }
-    
-    componentDidMount() {
-        this.refs.projectName.focus()
-    }
 
     render() {
-        return (
-            <form
-                className="modal-project-addnew"
-                onSubmit={
-                    (e) => {
-                        e.preventDefault()
-                        this.handleSubmit()
-                    }
-                }
-            >
+        let options = {
+            clickAway: true,
+            width: 400,
+            title: this.state.isEdit ? 'Edit project' : 'Add new project',
+            isOpen: this.props.isOpen,
+            onClose: this.handleClose,
+            buttons: {
+                'Submit': 'submit',
+                'Cancel': true
+            }
+        }
+        
+        const form = (
+            <form className="modal-project-addnew" onSubmit={this.handleSubmit}>
                 <dl className="form-group form-group-inline">
                     <dt className="group-header">Project Name: </dt>
                     <dd className="group-control">
                         <input
-                            ref="projectName"
                             type="text"
-                            name="projectName"
                             autoComplete="off"
+                            autoFocus
                             value={this.state.projectName}
                             onChange={this.handleChange} />
                     </dd>
                 </dl>
             </form>
         )
+        
+        return Modal.makeModal(options, form)
     }
-}
-
-FormProjectAdd.propTypes = {
-    projectName: PropTypes.string,
-    onSubmit: PropTypes.func.isRequired
 }
