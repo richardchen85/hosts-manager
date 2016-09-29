@@ -47,25 +47,28 @@ class ControlsList extends Component {
 
     render() {
         let { modalNewProjVisible, modalGlobalVisible } = this.state
+        let ctrlList = (
+            <ul className="ctrl-list">
+                <li className="ctrl-item" onClick={ e => this.setNewProjModal(true)}>
+                    <i className="iconfont">&#xe601;</i>添加分组
+                </li>
+                <li className="ctrl-item" onClick={handleRefresh}>
+                    <i className="iconfont">&#xe607;</i>刷新内容
+                </li>
+                <li className="ctrl-item" onClick={ e => this.setGlobalModal(true)}>
+                    <i className="iconfont">&#xe60a;</i>全局配置
+                </li>
+                <li className="ctrl-item" id="importBtn">
+                    <i className="iconfont">&#xe609;</i>导入配置
+                </li>
+                <li className="ctrl-item" id="exportBtn">
+                    <i className="iconfont">&#xe608;</i>导出配置
+                </li>
+            </ul>
+        )
         return (
             <div className="controls">
-                <ul className="ctrl-list">
-                    <li className="ctrl-item" onClick={ e => this.setNewProjModal(true)}>
-                        <i className="iconfont">&#xe601;</i>添加分组
-                    </li>
-                    <li className="ctrl-item" onClick={handleRefresh}>
-                        <i className="iconfont">&#xe607;</i>刷新内容
-                    </li>
-                    <li className="ctrl-item" onClick={ e => this.setGlobalModal(true)}>
-                        <i className="iconfont">&#xe60a;</i>全局配置
-                    </li>
-                    <li className="ctrl-item" id="importBtn">
-                        <i className="iconfont">&#xe609;</i>导入配置
-                    </li>
-                    <li className="ctrl-item" id="exportBtn">
-                        <i className="iconfont">&#xe608;</i>导出配置
-                    </li>
-                </ul>
+                {ctrlList}
                 <FormProjectAdd
                     isOpen={modalNewProjVisible}
                     onClose={ e => this.setNewProjModal(false)}

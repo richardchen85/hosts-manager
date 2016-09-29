@@ -1,8 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 
-import Immutable, { Map } from 'immutable'
-
 function getActiveProject(projects) {
     let activeProjects = projects.filter((project) => {
         return project.get('active')

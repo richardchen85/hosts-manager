@@ -1,49 +1,83 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import Immutable from 'immutable'
 import { connect } from 'react-redux'
 
-import Modal from '../components/modal/modal'
-import GroupItem from './groupItem'
-import FormGroupAdd from '../components/formGroupAdd'
-import { groupAdd } from '../actions'
+import GroupItem from '../components/groupItem'
+import {
+    groupDelete,
+    groupEditing,
+    groupEdit,
+    groupDeEdit,
+    groupActive,
+    groupDeActive
+} from '../actions'
 
 class GroupList extends Component {
     constructor(props) {
         super(props)
         
-        // this.state = {
-        //     isModalOpen: false
-        // }
-        // this.showModal = this.showModal.bind(this)
-        // this.handleSubmit = this.handleSubmit.bind(this)
+        this.changeGroupActive = this.changeGroupActive.bind(this)
+        this.handleGroupSubmit = this.handleGroupSubmit.bind(this)
+        this.changeGroupStatus = this.changeGroupStatus.bind(this)
+        this.handleGroupDelete = this.handleGroupDelete.bind(this)
     }
     
-    // showModal(show) {
-    //     this.setState({
-    //         isModalOpen: show
-    //     })
-    // }
+    changeGroupActive(active, index) {
+        let { dispatch, projIndex } = this.props
+        if(active) {
+            dispatch(groupActive(projIndex, index))
+        } else {
+            dispatch(groupDeActive(projIndex, index))
+        }
+    }
     
-    // handleSubmit(groupName, content) {
-    //     let { dispatch, projIndex } = this.props
-    //     dispatch(groupAdd(projIndex, Immutable.fromJS({
-    //         id: Date.now(),
-    //         groupName,
-    //         content,
-    //         active: false,
-    //         status: ''
-    //     })))
-    //     this.showModal(false)
-    // }
+    changeGroupStatus(status, index) {
+        let { dispatch, projIndex } = this.props
+        if(status) {
+            dispatch(groupEditing(projIndex, index))
+        } else {
+            dispatch(groupDeEdit(projIndex, index))
+        }
+    }
+    
+    handleGroupSubmit(content, index) {
+        let { dispatch, projIndex, groups } = this.props
+        let group = groups.get(index)
+        dispatch(groupEdit(projIndex, index, group.merge({
+            content,
+            status: ''
+        })))
+    }
+    
+    handleGroupDelete(index) {
+        let { dispatch, projIndex } = this.props
+        dispatch(groupDelete(projIndex, index))
+    }
     
     render() {
         let { groups, projIndex } = this.props
+        let {
+            changeGroupActive,
+            handleGroupSubmit,
+            changeGroupStatus,
+            handleGroupDelete
+        } = this
+        
+        function GroupItems(group, index) {
+            return <GroupItem
+                group={group}
+                projIndex={projIndex}
+                index={index}
+                key={index}
+                changeActive={changeGroupActive}
+                handleSubmit={handleGroupSubmit}
+                changeStatus={changeGroupStatus}
+                handleDelete={handleGroupDelete} />
+        }
 
         return (
             <ul className="ls-list">
-                {groups.map((group, index) => (
-                    <GroupItem group={group} projIndex={projIndex} index={index} key={group} />
-                ))}
+                {groups.map(GroupItems)}
             </ul>
         )
     }
