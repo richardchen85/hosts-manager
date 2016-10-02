@@ -25,6 +25,14 @@ export default function(state = Map(), action) {
                 ['projects', action.projIndex, 'projectName'],
                 action.projectName
             )
+        case types.PROJECT_ORDER:
+            return (() => {
+                let { projIndex } = action
+                let curr = state.getIn(['projects', projIndex])
+                let before = state.getIn(['projects', projIndex - 1])
+                return state.setIn(['projects', projIndex], before)
+                            .setIn(['projects', projIndex - 1], curr)
+            })()
         case types.GROUP_ADD:
             let keyPath = ['projects', action.projIndex, 'groups']
             return state.setIn(

@@ -5,7 +5,7 @@ import Modal from '../components/modal/modal'
 import NavList from '../components/navList'
 import FormProjectAdd from '../components/formProjectAdd'
 
-import { projectDelete, projectActive, projectEdit } from '../actions'
+import { projectDelete, projectActive, projectEdit, projectOrder } from '../actions'
 
 class Nav extends Component {
     constructor(props) {
@@ -20,6 +20,7 @@ class Nav extends Component {
         this.handleSelect = this.handleSelect.bind(this)
         this.handleEdit = this.handleEdit.bind(this)
         this.handleEditSubmit = this.handleEditSubmit.bind(this)
+        this.handleProjectOrder = this.handleProjectOrder.bind(this)
     }
     
     setModalVisible(visible) {
@@ -54,6 +55,11 @@ class Nav extends Component {
         dispatch(projectEdit(editProjectIndex, projectName))
     }
 
+    handleProjectOrder(index) {
+        let { dispatch } = this.props
+        dispatch(projectOrder(index))
+    }
+
     render() {
         let { projects } = this.props
         let editProjectName = projects.getIn([this.state.editProjectIndex, 'projectName'])
@@ -64,7 +70,8 @@ class Nav extends Component {
                     projects={projects}
                     handleSelect={this.handleSelect}
                     handleEdit={this.handleEdit}
-                    handleDelete={this.handleDelete}/>
+                    handleDelete={this.handleDelete}
+                    handleProjectOrder={this.handleProjectOrder}/>
                 <FormProjectAdd
                     isOpen={this.state.modalVisible}
                     onClose={e => this.setModalVisible(false)}

@@ -119,7 +119,7 @@ input, textarea {
     display: block;
     width: 100%;
     height: 100%;
-    padding-left: 2rem;
+    padding-left: 4rem;
 }
 .nav-list .nav-item:hover {
     background: rgba(30, 30, 30, .9);
@@ -133,7 +133,9 @@ input, textarea {
     cursor: default;
 }
 .nav-list .nav-item-edit,
-.nav-list .nav-item-del {
+.nav-list .nav-item-del,
+.nav-list .nav-item-up,
+.nav-list .nav-item-down {
     position: absolute;
     right: 5px;
     top: 0px;
@@ -143,10 +145,16 @@ input, textarea {
 }
 .nav-list .nav-item-edit {
     right: auto;
-    left: 5px;
+    left: .5rem;
+}
+.nav-list .nav-item-up {
+    right: auto;
+    left: 2.3rem;
 }
 .nav-list .nav-item:hover .nav-item-edit,
-.nav-list .nav-item:hover .nav-item-del {
+.nav-list .nav-item:hover .nav-item-del,
+.nav-list .nav-item:hover .nav-item-up,
+.nav-list .nav-item:hover .nav-item-down {
     display: block;
 }
 .nav-list .nav-item-del {

@@ -49,6 +49,12 @@ export function projectEdit(projIndex, projectName) {
         projectName
     }
 }
+export function projectOrder(projIndex) {
+    return {
+        type: types.PROJECT_ORDER,
+        projIndex
+    }
+}
 
 // group
 export function groupAdd(projIndex, group) {
