@@ -50,7 +50,7 @@ body {
     background: rgb(240, 240, 240);
 }
 body, input, select, button, textarea {
-    font: 1.2rem/1 Arial, Helvetica, sans-serif, "microsoft yahei";
+    font: 1.2rem/1.5 "microsoft yahei", Arial, Helvetica, sans-serif;
 }
 ul {
     list-style: none;
@@ -80,7 +80,7 @@ input, textarea {
     float: left;
     color: #fff;
     line-height: 3.5rem;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     margin-right:2rem;
     cursor: pointer;
 }
@@ -109,7 +109,7 @@ input, textarea {
 .nav-list .nav-item {
     height: 3rem;
     line-height: 3rem;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     color: #fff;
     cursor: pointer;
     transition: all .2s;
@@ -139,9 +139,12 @@ input, textarea {
     position: absolute;
     right: 5px;
     top: 0px;
-    display: none;
+    /* display: none; */
     font-size: 1.2rem;
     cursor: pointer;
+}
+.nav-list .nav-item-del {
+    display: none;
 }
 .nav-list .nav-item-edit {
     right: auto;
@@ -155,6 +158,9 @@ input, textarea {
 .nav-list .nav-item:hover .nav-item-del,
 .nav-list .nav-item:hover .nav-item-up,
 .nav-list .nav-item:hover .nav-item-down {
+    /* display: block; */
+}
+.nav-list .nav-item:hover .nav-item-del {
     display: block;
 }
 .nav-list .nav-item-del {
@@ -243,6 +249,9 @@ input, textarea {
     padding: .5rem;
     color: #666;
     background: #efefef;
+    max-height: 250px;
+    overflow: auto;
+    white-space: nowrap;
     transition: box-shadow .2s;
 }
 .ls-list .editing .cont {
@@ -251,6 +260,7 @@ input, textarea {
     outline: none;
     resize: vertical;
     height: 15rem;
+    max-height: none;
 }
 .ls-list .editing .cont:focus {
     box-shadow: 0 0 5px rgba(50, 150, 138, .8);
@@ -303,10 +313,11 @@ input, textarea {
 }
 .content .wrap {
     height: 100%;
-    overflow-y: scroll;
     padding: 5px;
     background: #fff;
     box-shadow: inset 0 0 5px rgba(0, 0, 0, .3);
+    overflow: auto;
+    white-space: nowrap;
 }
 
 /**
@@ -446,10 +457,10 @@ input, textarea {
 
 .modal-project-addnew input[type=text],
 .modal-project-addnew .content {
-    width: 280px;
+    width: 450px;
 }
 .modal-project-addnew .content {
-    height: 50px;
+    height: 200px;
     resize: vertical;
 }
 

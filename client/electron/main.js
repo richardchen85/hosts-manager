@@ -11,8 +11,8 @@ let mainWindow
 function createWindow () {
     // Create the browser window.
     mainWindow = new BrowserWindow({
-        width: 1010,
-        height: 600,
+        width: 1024,
+        height: 680,
         icon: `${__dirname}/hosts-manager.png`
     })
 
