@@ -68,7 +68,7 @@ class GroupList extends Component {
                 group={group}
                 projIndex={projIndex}
                 index={index}
-                key={index}
+                key={group}
                 changeActive={changeGroupActive}
                 handleSubmit={handleGroupSubmit}
                 changeStatus={changeGroupStatus}
