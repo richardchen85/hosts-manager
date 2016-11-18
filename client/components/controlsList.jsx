@@ -50,7 +50,7 @@ class ControlsList extends Component {
         let ctrlList = (
             <ul className="ctrl-list">
                 <li className="ctrl-item" onClick={ e => this.setNewProjModal(true)}>
-                    <i className="iconfont">&#xe601;</i>添加分组
+                    <i className="iconfont">&#xe601;</i>添加项目
                 </li>
                 <li className="ctrl-item" onClick={handleRefresh}>
                     <i className="iconfont">&#xe607;</i>刷新内容

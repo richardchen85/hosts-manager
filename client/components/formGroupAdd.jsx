@@ -57,7 +57,7 @@ export default class FormGroupAdd extends Component {
         let form = (
             <form
                 ref="formAddGroup"
-                className="modal-project-addnew"
+                className="modal-group-addnew"
                 onSubmit={this.handleSubmit}>
                 <dl className="form-group form-group-inline">
                     <dt className="group-header">Group Name: </dt>
