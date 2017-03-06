@@ -45,11 +45,11 @@ export default class FormGroupAdd extends Component {
         let options = {
             clickAway: true,
             width: 570,
-            title: "Add new group",
+            title: "add new group",
             isOpen: this.props.isOpen,
             onClose: this.handleClose,
             buttons: {
-                'Add Group': 'submit',
+                'Confirm': 'submit',
                 'Cancel': true
             }
         }
@@ -60,7 +60,7 @@ export default class FormGroupAdd extends Component {
                 className="modal-group-addnew"
                 onSubmit={this.handleSubmit}>
                 <dl className="form-group form-group-inline">
-                    <dt className="group-header">Group Name: </dt>
+                    <dt className="group-header">group name: </dt>
                     <dd className="group-control">
                         <input
                             type="text"
@@ -72,7 +72,7 @@ export default class FormGroupAdd extends Component {
                     </dd>
                 </dl>
                 <dl className="form-group form-group-inline">
-                    <dt className="group-header">Content: </dt>
+                    <dt className="group-header">content: </dt>
                     <dd className="group-control">
                         <textarea
                             className="content"

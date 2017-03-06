@@ -78,14 +78,18 @@ input, textarea {
 }
 .controls .ctrl-item {
     float: left;
-    color: #fff;
+    color: #ddd;
     line-height: 3.5rem;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     margin-right:2rem;
     cursor: pointer;
 }
+.controls .ctrl-item:hover {
+    color: #fff;
+}
 .controls .ctrl-item .iconfont {
     margin-right: .3rem;
+    vertical-align: middle;
 }
 
 /**
@@ -104,13 +108,13 @@ input, textarea {
 .nav {
     width: 18rem;
     background: #333;
-    padding: 1rem 0 1rem 1rem;
+    padding: 1rem 0;
 }
 .nav-list .nav-item {
     height: 3rem;
     line-height: 3rem;
-    font-size: 1.5rem;
-    color: #fff;
+    font-size: 1.4rem;
+    color: #ddd;
     cursor: pointer;
     transition: all .2s;
     position: relative;
@@ -122,13 +126,11 @@ input, textarea {
     padding-left: 4rem;
 }
 .nav-list .nav-item:hover {
+    color: #fff;
     background: rgba(30, 30, 30, .9);
-    border-radius: .5rem 0 0 .5rem;
 }
 .nav-list .nav-item.active {
     background: rgb(240, 240, 240);
-    border-radius: .5rem 0 0 .5rem;
-    box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .4);
     color: #333;
     cursor: default;
 }
@@ -139,9 +141,9 @@ input, textarea {
     position: absolute;
     right: 5px;
     top: 0px;
-    /* display: none; */
     font-size: 1.2rem;
     cursor: pointer;
+    vertical-align: middle;
 }
 .nav-list .nav-item-del {
     display: none;
@@ -153,12 +155,6 @@ input, textarea {
 .nav-list .nav-item-up {
     right: auto;
     left: 2.3rem;
-}
-.nav-list .nav-item:hover .nav-item-edit,
-.nav-list .nav-item:hover .nav-item-del,
-.nav-list .nav-item:hover .nav-item-up,
-.nav-list .nav-item:hover .nav-item-down {
-    /* display: block; */
 }
 .nav-list .nav-item:hover .nav-item-del {
     display: block;
@@ -191,19 +187,23 @@ input, textarea {
     display: inline-block;
     border: .1rem solid #ccc;
     padding: .5rem;
-    margin: .3rem 0;
-    border-radius: .3rem;
-    background: #fff;
+    margin: .5rem 0;
+    background: #ddd;
     transition: all .2s;
+    color: #999;
 }
 .list .ls-item:hover,
 .list .ls-item-add:hover {
-    border-color: #faa;
-    background: #fafafa;
+    box-shadow: 0 0 5px rgba(0,0,0,.3);
+}
+.list .ls-item.checked {
+    background: #fcfcfc;
+    color: #333;
 }
 .ls-list .header {
     overflow: hidden;
     position: relative;
+    cursor: pointer;
 }
 .ls-list .title {
     font-weight: normal;
@@ -257,13 +257,13 @@ input, textarea {
 .ls-list .editing .cont {
     color: #333;
     background: #fff;
-    outline: none;
     resize: vertical;
     height: 15rem;
     max-height: none;
+    outline: none;
 }
 .ls-list .editing .cont:focus {
-    box-shadow: 0 0 5px rgba(50, 150, 138, .8);
+    border-color: #7591FF;
 }
 .ls-list .ft {
     display: none;
@@ -293,11 +293,11 @@ input, textarea {
     font-size:1.4rem;
     background:#e7e7e7;
     cursor: pointer;
+    color: #333;
 }
-.list .ls-item-btn-add i {
+.list .ls-item-add i {
     position: relative;
     top:2px;
-    color: #333;
     margin-right: .5rem;
 }
 
@@ -315,9 +315,9 @@ input, textarea {
     height: 100%;
     padding: 5px;
     background: #fff;
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, .3);
     overflow: auto;
     white-space: nowrap;
+    border-left: 1px solid #ccc;
 }
 
 /**
@@ -369,31 +369,31 @@ input, textarea {
     z-index: 999;
     margin: 100px auto;
     background:#fff;
-    border-radius: .5rem;
     border: 1px solid #333;
     box-shadow: 0 0 15px rgba(0,0,0,.7);
     overflow: hidden;
 }
 .dialog .header {
     text-align:center;
-    height:3rem;
-    line-height: 3rem;
-    font-size:1.8rem;
-    background-image: linear-gradient(#fff, #e7e7e7);
+    height:4rem;
+    line-height: 4rem;
+    font-size:1.6rem;
+    background: #eee;
+    text-shadow: 1px 1px #fff;
 }
 .dialog .cont {
-    padding: 1rem .5rem;
+    padding: 1rem;
 }
 .dialog .footer {
     text-align: right;
-    padding-right: .5rem;
+    padding-right: 1rem;
     font-size:0;
-    padding-bottom:.5rem;
+    padding-bottom: 1rem;
 }
 .dialog-close {
     position: absolute;
     top: .5rem;
-    right: .5rem;
+    right: 1rem;
     font-size:18px;
     cursor: pointer;
     transition: transform .4s;
@@ -407,7 +407,6 @@ input, textarea {
     border: 1px solid #e7e7e7;
     font-size:1.4rem;
     margin-left:1rem;
-    border-radius: .3rem;
     background-image: linear-gradient(#fefefe, #e7e7e7);
     cursor: pointer;
     text-shadow: 1px 1px 1px #fff;
@@ -417,6 +416,7 @@ input, textarea {
     background-image: linear-gradient(#fafafa, #cfcfcf);
 }
 .dialog-btn:active {
+    border-color: #7591FF;
     background-image: linear-gradient(#e7e7e7, #efefef);
 }
 .dialog .form-group {
@@ -427,18 +427,16 @@ input, textarea {
     margin-bottom: .5rem;
     font-size:1.4rem;
 }
-.dialog .form-group-inline {
-}
-.dialog .form-group-inline .group-header,
-.dialog .form-group-inline .group-control {
-    display:inline-block;
-}
 .dialog .form-group-inline .group-header {
     width: 100px;
     padding-right: .5rem;
     text-align: right;
     vertical-align: top;
     line-height: 28px;
+    float: left;
+}
+.dialog .form-group-inline .group-control {
+    overflow: hidden;
 }
 .dialog .form-group input,
 .dialog .form-group select,
@@ -447,17 +445,16 @@ input, textarea {
     padding: .5rem;
     background: #fff;
     border: 1px solid #ddd;
-    border-radius: .3rem;
 }
 .dialog .form-group input:focus,
 .dialog .form-group select:focus,
 .dialog .form-group .content:focus {
-    box-shadow: inset 0 0 3px rgba(0,0,0,.3);
+    border-color: #7591FF;
 }
 
 .modal-group-addnew input[type=text],
 .modal-group-addnew .content {
-    width: 450px;
+    width: 100%;
 }
 .modal-group-addnew .content {
     height: 200px;
@@ -465,10 +462,10 @@ input, textarea {
 }
 
 .modal-project-addnew input[type=text] {
-    width: 280px;
+    width: 100%;
 }
 
 .modal-global-form .content {
-    width: 250px;
+    width: 100%;
     height:200px;
 }

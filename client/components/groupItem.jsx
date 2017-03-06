@@ -1,20 +1,18 @@
 import React, { Component } from 'react'
 
 function Header(props) {
-    let { group, index } = props
+    let { group, active, editing, index } = props
     return (
         <header className="header">
-            <h3 className="title">
-                <i className="iconfont i-no-check" title="未选择"
-                    onClick={ e => props.changeActive(true, index) }>&#xe604;</i>
-                <i className="iconfont i-checked" title="已选择"
-                    onClick={ e => props.changeActive(false, index) }>&#xe605;</i>
+            <h3 className="title" onClick={ e => props.changeActive(!active, index) }>
+                <i className="iconfont i-no-check">&#xe604;</i>
+                <i className="iconfont i-checked">&#xe605;</i>
                 <span>({index + 1}) {group.get('groupName')}</span>
             </h3>
             <div className="ctrl">
-                <i className="iconfont i-edit" title="修改"
-                    onClick={ e => props.changeStatus(true, index) }>&#xe606;</i>
-                <i className="iconfont i-del" title="删除"
+                <i className="iconfont i-edit" title="modify"
+                    onClick={ e => props.changeStatus(!editing, index) }>&#xe606;</i>
+                <i className="iconfont i-del" title="delete"
                     onClick={e => props.handleDelete(index)}>&#xe600;</i>
             </div>
         </header>
@@ -27,10 +25,10 @@ function Footer(props) {
         <footer className="ft">
             <span className="editing-btn-apply"
                 onClick={e => props.handleSubmit(content, index)}>
-                <i className="iconfont">&#xe603;</i>应用</span>
+                <i className="iconfont">&#xe603;</i>Apply</span>
             <span className="editing-btn-cancel"
                 onClick={ e => props.changeStatus(false, index) }>
-                <i className="iconfont">&#xe602;</i>取消</span>
+                <i className="iconfont">&#xe602;</i>Cancel</span>
         </footer>
     )
 }
@@ -76,7 +74,7 @@ export default class GroupItem extends Component {
         
         return (
             <li className={className.join(' ')}>
-                <Header {...this.props} />
+                <Header {...this.props} active={active} editing={editing} />
                 { editing ? textarea : contDiv }
                 <Footer {...this.props} content={content} />
             </li>

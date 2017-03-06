@@ -42,7 +42,7 @@ export default class FormGlobal extends Component {
         let options = {
             clickAway: true,
             width: 400,
-            title: 'Edit global hosts',
+            title: 'global hosts',
             isOpen: this.props.isOpen,
             onClose: this.handleClose,
             buttons: {
@@ -53,8 +53,7 @@ export default class FormGlobal extends Component {
         
         let form = (
             <form className="modal-global-form" onSubmit={this.handleSubmit}>
-                <dl className="form-group form-group-inline">
-                    <dt className="group-header">Content: </dt>
+                <dl className="form-group">
                     <dd className="group-control">
                         <textarea
                             autoFocus

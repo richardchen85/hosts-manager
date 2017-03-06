@@ -28,9 +28,9 @@ export default class FormProjectAdd extends Component {
         if(projectName === '') {
             Modal.open({
                 width: 300,
-                header: '信息提示',
-                content: '项目名称不能为空！',
-                buttons: {'确定': true}
+                header: 'info',
+                content: 'Project name can not be empty!',
+                buttons: {'OK': true}
             })
         } else {
             this.props.onSubmit(projectName)
@@ -54,7 +54,7 @@ export default class FormProjectAdd extends Component {
         let options = {
             clickAway: true,
             width: 400,
-            title: this.state.isEdit ? 'Edit project' : 'Add new project',
+            title: this.state.isEdit ? 'modify project' : 'add new project',
             isOpen: this.props.isOpen,
             onClose: this.handleClose,
             buttons: {
@@ -65,8 +65,8 @@ export default class FormProjectAdd extends Component {
         
         const form = (
             <form className="modal-project-addnew" onSubmit={this.handleSubmit}>
-                <dl className="form-group form-group-inline">
-                    <dt className="group-header">Project Name: </dt>
+                <dl className="form-group">
+                    <dt className="group-header">project name: </dt>
                     <dd className="group-control">
                         <input
                             type="text"

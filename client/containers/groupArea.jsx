@@ -59,7 +59,7 @@ class GroupArea extends Component {
                 <div
                     className="ls-item-add"
                     onClick={e => this.showModal(true)}>
-                    <i className="iconfont">&#xe601;</i>添加
+                    <i className="iconfont">&#xe601;</i>Add
                 </div>
                 <FormGroupAdd
                     projIndex={activeIndex}

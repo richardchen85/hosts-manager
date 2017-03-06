@@ -21,14 +21,14 @@ export default class NavList extends Component {
                     <span onClick={ e => handleSelect(index) }>
                         {project.get('projectName')}
                     </span>
-                    <i className="iconfont nav-item-edit" title="修改"
+                    <i className="iconfont nav-item-edit" title="modify"
                         onClick={ e => handleEdit(true, index) }>&#xe606;</i>
                     {index > 0 && 
-                        <i className="iconfont nav-item-up" title="向上"
+                        <i className="iconfont nav-item-up" title="up"
                             onClick={e => handleProjectOrder(index)}>&#xe60b;</i>
                     }
-                    <i className="iconfont nav-item-del" title="删除"
-                    onClick={ e => this.props.handleDelete(index) }>&#xe600;</i>
+                    <i className="iconfont nav-item-del" title="delete"
+                        onClick={ e => this.props.handleDelete(index) }>&#xe600;</i>
                 </li>
             )
         }

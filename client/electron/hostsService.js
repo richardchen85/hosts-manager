@@ -99,7 +99,7 @@ function doImport() {
         window.hostsFile.saveJSON(JSON.stringify(jsonContent))
         window.location.reload()
     } else {
-        alert('导入失败！\r\n内容格式必须为json，并且包含global（字符串）和projects（数组）两个字段！')
+        alert('Import failed!\nFile type must be .json, and has two field: "global(String)" and "projects(Array)"')
     }
 }
 
