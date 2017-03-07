@@ -43,6 +43,9 @@ npm run pack
 
 ## changelog
 
+### v0.0.4
+* 一些UI上的优化
+
 ### v0.0.3
 
 * 增加导入导出功能

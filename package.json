@@ -1,11 +1,11 @@
 {
   "name": "hosts-manager",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "一款跨平台的hosts文件管理工具",
   "main": "./electron/main.js",
   "scripts": {
     "lib": "webpack --config ./webpack.lib.js",
-    "start": "webpack-dev-server --no-info --inline --hot",
+    "start": "webpack-dev-server --no-info --open --inline --hot",
     "build": "cross-env NODE_ENV=production webpack",
     "electron": "electron ./dist/electron/main.js",
     "pack": "node ./scripts/pack.js",
