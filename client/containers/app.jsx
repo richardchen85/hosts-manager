@@ -6,7 +6,6 @@ import { connect } from 'react-redux'
 import Controls from './controls'
 import Nav from './nav'
 import GroupArea from './groupArea'
-import Content from './content'
 
 import { initData } from '../actions'
 
@@ -24,7 +23,6 @@ class App extends Component {
                 <div className="main">
                     <Nav />
                     <GroupArea />
-                    <Content />
                 </div>
             </div>
         )

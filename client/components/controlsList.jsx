@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import Modal from '../components/modal/modal'
 import FormProjectAdd from '../components/formProjectAdd'
 import FormGlobal from '../components/formGlobal'
+import Content from '../components/content'
 
 function handleRefresh() {
     window.location.reload()
@@ -15,12 +16,14 @@ class ControlsList extends Component {
 
         this.state = {
             modalNewProjVisible: false,
-            modalGlobalVisible: false
+            modalGlobalVisible: false,
+            modalPreviewVisible: false
         }
         this.setNewProjModal = this.setNewProjModal.bind(this)
         this.submitNewProj = this.submitNewProj.bind(this)
         this.setGlobalModal = this.setGlobalModal.bind(this)
         this.submitGlobal = this.submitGlobal.bind(this)
+        this.setPreviewVisible = this.setPreviewVisible.bind(this)
     }
     
     setNewProjModal(visible) {
@@ -45,8 +48,16 @@ class ControlsList extends Component {
         this.props.submitGlobal(content)
     }
 
+    setPreviewVisible(visible) {
+        this.setState({
+            modalPreviewVisible: visible
+        })
+    }
+
     render() {
-        let { modalNewProjVisible, modalGlobalVisible } = this.state
+        let { modalNewProjVisible, modalGlobalVisible, modalPreviewVisible } = this.state
+        let { global, projects } = this.props
+
         let ctrlList = (
             <ul className="ctrl-list">
                 <li className="ctrl-item" onClick={ e => this.setNewProjModal(true)}>
@@ -64,6 +75,9 @@ class ControlsList extends Component {
                 <li className="ctrl-item" id="exportBtn">
                     <i className="iconfont">&#xe608;</i>export
                 </li>
+                <li className="ctrl-item" onClick={ e => this.setPreviewVisible(true)}>
+                    ◎ preview
+                </li>
             </ul>
         )
         return (
@@ -78,6 +92,10 @@ class ControlsList extends Component {
                     isOpen={modalGlobalVisible}
                     onClose={e => this.setGlobalModal(false)}
                     onSubmit={this.submitGlobal}/>
+                <Modal isOpen={modalPreviewVisible}
+                       onClose={ e => this.setPreviewVisible(false)}>
+                    <Content global={global} projects={projects} />
+                </Modal>
             </div>
         )
     }
@@ -85,7 +103,8 @@ class ControlsList extends Component {
 
 function mapStateToProps(state) {
     return {
-        global: state.get('global')
+        global: state.get('global'),
+        projects: state.get('projects')
     }
 }
 

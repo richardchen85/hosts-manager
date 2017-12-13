@@ -178,12 +178,12 @@ input, textarea {
     overflow-y: auto;
 }
 .ls-list {
-    column-width: 25rem;
+    column-count: 2;
     column-gap: .5rem;
 }
 .list .ls-item,
 .list .ls-item-add {
-    width: 25rem;
+    width: 100%;
     display: inline-block;
     border: .1rem solid #ccc;
     padding: .5rem;
@@ -199,6 +199,9 @@ input, textarea {
 .list .ls-item.checked {
     background: #fcfcfc;
     color: #333;
+}
+.list .ls-item-add {
+    width: calc(50% - .25rem);
 }
 .ls-list .header {
     overflow: hidden;
@@ -243,8 +246,7 @@ input, textarea {
     display: none;
 }
 .ls-list .cont {
-    width: 23rem;
-    margin: .5rem;
+    width: 100%;
     border: 1px solid #e7e7e7;
     padding: .5rem;
     color: #666;
@@ -307,9 +309,9 @@ input, textarea {
  * ===============================================
  */
 .content {
-    flex: 2.2;
-    height: 100%;
-    overflow: hidden;
+    height: 30em;
+    padding-top: 25px;
+    overflow: auto;
 }
 .content .wrap {
     height: 100%;
@@ -317,7 +319,7 @@ input, textarea {
     background: #fff;
     overflow: auto;
     white-space: nowrap;
-    border-left: 1px solid #ccc;
+    border: 1px solid #ccc;
 }
 
 /**

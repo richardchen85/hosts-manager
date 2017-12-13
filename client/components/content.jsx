@@ -1,13 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import { connect } from 'react-redux'
-
-function getActiveProject(projects) {
-    let activeProjects = projects.filter((project) => {
-        return project.get('active')
-    })
-    
-    return activeProjects.get(0)
-}
 
 class Content extends Component {
     render() {
@@ -34,11 +25,4 @@ class Content extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        global: state.get('global'),
-        projects: state.get('projects')
-    }
-}
-
-export default connect(mapStateToProps)(Content)
+export default Content
