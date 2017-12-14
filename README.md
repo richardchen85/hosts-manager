@@ -43,6 +43,10 @@ npm run pack
 
 ## changelog
 
+### v0.0.5
+* 样式调整
+* hosts 文件内容预览移到顶部导航
+
 ### v0.0.4
 * 一些UI上的优化
 
