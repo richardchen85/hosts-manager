@@ -179,7 +179,7 @@ input, textarea {
 }
 .ls-list {
     column-count: 2;
-    column-gap: .5rem;
+    column-gap: 1rem;
 }
 .list .ls-item,
 .list .ls-item-add {
@@ -201,7 +201,7 @@ input, textarea {
     color: #333;
 }
 .list .ls-item-add {
-    width: calc(50% - .25rem);
+    width: calc(50% - .5rem);
 }
 .ls-list .header {
     overflow: hidden;
