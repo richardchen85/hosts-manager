@@ -2,7 +2,7 @@ global = typeof window === 'undefined' ? global : window
 
 global.Api = {
     getData: function() {
-        return require('./data.test.json')
+        return Promise.resolve(require('./data.test.json'))
     },
     saveData: function(str) {
         console.log('Api.saveData()')

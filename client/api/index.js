@@ -3,10 +3,10 @@ window.Api = {
         return hostsFile.getData()
     },
     saveData: function(str) {
-        hostsFile.save(str)
+        return hostsFile.save(str)
     },
     saveJSON: function(json) {
-        hostsFile.saveJSON(json)
+        return hostsFile.saveJSON(json)
     },
     getContent: function(state) {
         let content = state.global + '\n'

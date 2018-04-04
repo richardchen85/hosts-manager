@@ -1,12 +1,14 @@
 const packager = require('electron-packager')
 const package = require('../dist/package.json')
+const argv = require('minimist')(process.argv.slice(2))
 
-platform = ['linux', 'win32', 'darwin']
-icon = [
-    './dist/electron/hosts-manager.png',
-    './dist/electron/hosts-manager.ico',
-    './dist/electron/hosts-manager.icns'
-]
+let platform = argv.p
+
+icon = {
+    linux: './dist/electron/hosts-manager.png',
+    win32: './dist/electron/hosts-manager.ico',
+    darwin: './dist/electron/hosts-manager.icns'
+}
 
 let config = {
     dir: './dist',
@@ -14,19 +16,15 @@ let config = {
     name: package.name + '-v' + package.version,
     overwrite: true,
     arch: ['ia32', 'x64'],
-    platform: null,
-    icon: null,
+    platform: [platform],
+    icon: icon[platform],
     download: 'https://npm.taobao.org/mirrors/electron'
 }
 
-platform.forEach((p, i) => {
-    config.platform = [p]
-    config.icon = icon[i]
-    packager(config, function(err, appPaths) {
-        if(err) {
-            console.log('[pack error] ' + err)
-        } else {
-            console.log('[pack success]' + appPaths)
-        }
-    })
+packager(config, function(err, appPaths) {
+    if(err) {
+        console.log('[pack error] ' + err)
+    } else {
+        console.log('[pack success]' + appPaths)
+    }
 })

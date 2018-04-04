@@ -1,14 +1,16 @@
 {
   "name": "hosts-manager",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "一款跨平台的hosts文件管理工具",
   "main": "./electron/main.js",
   "scripts": {
     "lib": "webpack --config ./webpack.lib.js",
     "start": "webpack-dev-server --no-info --open --inline --hot",
     "build": "cross-env NODE_ENV=production webpack",
-    "electron": "electron ./dist/electron/main.js",
-    "pack": "node ./scripts/pack.js",
+    "electron": "electron ./dist/electron/main.js --pre",
+    "pack-win32": "node ./scripts/pack.js -p win32",
+    "pack-darwin": "node ./scripts/pack.js -p darwin",
+    "pack-linux": "node ./scripts/pack.js -p linux",
     "test": "mocha --compilers js:babel-core/register"
   },
   "repository": {
@@ -39,18 +41,20 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
     "html-webpack-plugin": "^2.22.0",
+    "immutable": "^3.8.1",
     "json-loader": "^0.5.4",
+    "minimist": "^1.2.0",
     "mocha": "^3.0.2",
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.15.2"
   },
   "dependencies": {
-    "immutable": "^3.8.1",
-    "react": "^15.3.1",
-    "react-dom": "^15.3.1",
-    "react-redux": "^4.4.5",
-    "redux": "^3.5.2"
+    "md5-file": "^3.2.3"
   }
 }

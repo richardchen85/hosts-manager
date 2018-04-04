@@ -1,13 +1,10 @@
 const { app, BrowserWindow, Menu } = require('electron')
 const menuTpl = require('./menu')(app)
+const pre = process.argv.indexOf('--pre') > -1
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
-
-Menu.setApplicationMenu(
-    Menu.buildFromTemplate(menuTpl)
-)
 
 function createWindow () {
     // Create the browser window.
@@ -16,6 +13,12 @@ function createWindow () {
         height: 680,
         icon: `${__dirname}/hosts-manager.png`
     })
+
+    Menu.setApplicationMenu(
+        Menu.buildFromTemplate(menuTpl)
+    )
+
+    pre && mainWindow.webContents.openDevTools()
 
     // and load the index.html of the app.
     mainWindow.loadURL(`file://${__dirname}/../index.html`)

@@ -12,8 +12,11 @@ import { initData } from '../actions'
 class App extends Component {
     componentDidMount() {
         let { dispatch } = this.props
-
-        dispatch(initData(Api.getData()))
+        Api.getData().then(data => {
+            dispatch(initData(data))
+        }).catch(e => {
+            alert(e)
+        })
     }
 
     render() {
