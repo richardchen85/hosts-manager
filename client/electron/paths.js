@@ -21,7 +21,8 @@ function initPath(workPath, hostsPath) {
     console.log(e)
   }
 
-  fs.copyFileSync(hostsPath, path.join(workPath, 'hosts.bak'))
+  const workContent = fs.readFileSync(hostsPath)
+  fs.writeFileSync(path.join(workPath, 'hosts.bak'), workContent)
 
   let fileData = path.join(workPath, 'data.json')
   let data = {
