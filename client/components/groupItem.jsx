@@ -71,7 +71,7 @@ export default class GroupItem extends Component {
             <li className={className.join(' ')}>
                 <Header {...this.props} active={active} editing={editing} />
                 <div className="code-wrap">
-                    <CodeArea value={content} readonly={editing ? false : 'nocursor'} onChange={this.handleChange} />
+                    <CodeArea value={content} readonly={editing} onChange={this.handleChange} />
                 </div>
                 <Footer {...this.props} content={content} />
             </li>
