@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import Modal from './modal/modal'
+import CodeArea from './codeArea'
 
 export default class FormGroupAdd extends Component {
     constructor(props) {
@@ -12,11 +13,12 @@ export default class FormGroupAdd extends Component {
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.handleClose = this.handleClose.bind(this)
+        this.handleContentChange = this.handleContentChange.bind(this)
     }
-    
+
     handleSubmit(e) {
         e.preventDefault()
-        
+
         let { groupName, content } = this.state
         if(groupName === '') {
             Modal.alert('Group name can not be empty !')
@@ -26,19 +28,25 @@ export default class FormGroupAdd extends Component {
             this.props.onSubmit(this.props.projIndex, groupName, content)
         }
     }
-    
+
     handleChange(e) {
         this.setState({
             [e.target.getAttribute('name')]: e.target.value
         })
     }
-    
+
     handleClose() {
         this.setState({
             groupName: '',
             content: ''
         })
         this.props.onClose()
+    }
+
+    handleContentChange(value) {
+        this.setState({
+            content: value
+        })
     }
 
     render() {
@@ -53,7 +61,7 @@ export default class FormGroupAdd extends Component {
                 'Cancel': true
             }
         }
-        
+
         let form = (
             <form
                 ref="formAddGroup"
@@ -74,16 +82,15 @@ export default class FormGroupAdd extends Component {
                 <dl className="form-group form-group-inline">
                     <dt className="group-header">content: </dt>
                     <dd className="group-control">
-                        <textarea
-                            className="content"
-                            name="content"
+                        <CodeArea
                             value={this.state.content}
-                            onChange={this.handleChange} />
+                            readonly={false}
+                            onChange={this.handleContentChange} />
                     </dd>
                 </dl>
             </form>
         )
-        
+
         return Modal.makeModal(options, form)
     }
 }

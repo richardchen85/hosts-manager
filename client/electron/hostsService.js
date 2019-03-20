@@ -42,7 +42,13 @@ window.hostsFile = {
      */
     getData: function() {
         return getJSON().then(data => {
-            return JSON.parse(data)
+            data = JSON.parse(data)
+            data.projects.forEach(proj => {
+                proj.groups.forEach(group => {
+                    group.expand = true
+                })
+            })
+            return data
         }).catch(e => {
             throw new Error('getData error: ' + JSON.stringify(e))
         })

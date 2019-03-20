@@ -1,19 +1,23 @@
 import React, { Component } from 'react'
+import CodeArea from './codeArea'
 
 function Header(props) {
-    let { group, active, editing, index } = props
+    let { group, active, editing, index, toggleExpand, changeActive, changeStatus, handleDelete } = props
     return (
         <header className="header">
-            <h3 className="title" onClick={ e => props.changeActive(!active, index) }>
-                <i className="iconfont i-no-check">&#xe604;</i>
-                <i className="iconfont i-checked">&#xe605;</i>
-                <span>({index + 1}) {group.get('groupName')}</span>
+            <div className="arrow" onClick={ e => toggleExpand(index, !group.get('expand'))}/>
+            <h3 className="title">
+                <span onClick={ e => changeActive(!active, index) }>
+                    <i className="iconfont i-no-check">&#xe604;</i>
+                    <i className="iconfont i-checked">&#xe605;</i>
+                    <em>{group.get('groupName')}</em>
+                </span>
             </h3>
             <div className="ctrl">
                 <i className="iconfont i-edit" title="modify"
-                    onClick={ e => props.changeStatus(!editing, index) }>&#xe606;</i>
+                    onClick={ e => changeStatus(!editing, index) }>&#xe606;</i>
                 <i className="iconfont i-del" title="delete"
-                    onClick={e => props.handleDelete(index)}>&#xe600;</i>
+                    onClick={e => handleDelete(index)}>&#xe600;</i>
             </div>
         </header>
     )
@@ -36,46 +40,39 @@ function Footer(props) {
 export default class GroupItem extends Component {
     constructor(props) {
         super(props)
-        
+
         this.state = {
-            content: this.props.group.get('content')
+            content: this.props.group.get('content'),
         }
-        
+
         this.handleChange = this.handleChange.bind(this)
     }
-    
-    handleChange(e) {
+
+    handleChange(content) {
         this.setState({
-            content: e.target.value
+            content
         })
     }
-    
+
     render() {
-        let { group, index } = this.props
+        let { group } = this.props
         let { content } = this.state
 
         let className = ['ls-item']
         let active = group.get('active')
         let editing = group.get('status') === 'editing'
-        
+        let expand = group.get('expand')
+
         active && className.push('checked')
         editing && className.push('editing')
-        
-        const textarea = <textarea
-            className="cont"
-            value={content}
-            onChange={this.handleChange} />
-        
-        const contDiv = <div
-            className="cont"
-            dangerouslySetInnerHTML={{
-                __html: content.replace(/\r?\n/g, '<br/>')
-            }} />
-        
+        expand && className.push('expand')
+
         return (
             <li className={className.join(' ')}>
                 <Header {...this.props} active={active} editing={editing} />
-                { editing ? textarea : contDiv }
+                <div className="code-wrap">
+                    <CodeArea value={content} readonly={editing ? false : 'nocursor'} onChange={this.handleChange} />
+                </div>
                 <Footer {...this.props} content={content} />
             </li>
         )

@@ -9,20 +9,20 @@ import { groupAdd } from '../actions'
 class GroupArea extends Component {
     constructor() {
         super()
-        
+
         this.state = {
             isModalOpen: false
         }
         this.showModal = this.showModal.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
-    
+
     showModal(show) {
         this.setState({
             isModalOpen: show
         })
     }
-    
+
     handleSubmit(projIndex, groupName, content) {
         let { dispatch } = this.props
         dispatch(groupAdd(projIndex, {
@@ -31,12 +31,12 @@ class GroupArea extends Component {
         }))
         this.showModal(false)
     }
-    
+
     render() {
         let { projects } = this.props
         let { isModalOpen } = this.state
         let activeProject, activeIndex
-        
+
         projects.forEach((project, index) => {
             if(project.get('active')) {
                 activeProject = project
@@ -44,23 +44,23 @@ class GroupArea extends Component {
                 return false
             }
         })
-        
+
         if(!activeProject) {
             return <div className="list">no active project</div>
         }
-        
+
         let groups = activeProject.get('groups')
 
         return (
             <div className="list">
-                <GroupList
-                    projIndex={activeIndex}
-                    groups={groups} />
                 <div
                     className="ls-item-add"
                     onClick={e => this.showModal(true)}>
                     <i className="iconfont">&#xe601;</i>Add
                 </div>
+                <GroupList
+                    projIndex={activeIndex}
+                    groups={groups} />
                 <FormGroupAdd
                     projIndex={activeIndex}
                     isOpen={isModalOpen}

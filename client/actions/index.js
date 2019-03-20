@@ -63,6 +63,7 @@ export function groupAdd(projIndex, group) {
         groupName: group.groupName,
         content: group.content,
         active: false,
+        expand: true,
         status: ''
     })
     return {
@@ -112,5 +113,13 @@ export function groupDeActive(projIndex, groupIndex) {
         type: types.GROUP_DEACTIVE,
         projIndex,
         groupIndex
+    }
+}
+export function groupExpand(projIndex, groupIndex, expand) {
+    return {
+        type: types.GROUP_EXPAND,
+        projIndex,
+        groupIndex,
+        expand
     }
 }

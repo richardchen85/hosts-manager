@@ -68,6 +68,11 @@ export default function(state = Map(), action) {
                 ['projects', action.projIndex, 'groups', action.groupIndex, 'active'],
                 false
             )
+        case types.GROUP_EXPAND:
+            return state.mergeIn(
+                ['projects', action.projIndex, 'groups', action.groupIndex, 'expand'],
+                action.expand
+            )
         default:
             return state
     }

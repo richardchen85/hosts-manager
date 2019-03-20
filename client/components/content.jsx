@@ -1,25 +1,24 @@
 import React, { Component, PropTypes } from 'react'
+import CodeArea from './codeArea'
 
 class Content extends Component {
     render() {
         let { projects } = this.props
-        let content = this.props.global + '<br/>'
-        
+        let content = this.props.global + '\n'
+
         projects.filter((project) => {
             return project.get('active')
         }).forEach((project) => {
             project.get('groups').filter((group) => {
                 return group.get('active')
             }).forEach((group) => {
-                content += group.get('content') + '<br/>'
+                content += group.get('content') + '\n'
             })
         })
-        
-        content = content.replace(/\r?\n/g, '<br/>')
-        
+
         return (
             <div className="content">
-                <div className="wrap" dangerouslySetInnerHTML={{__html: content}}/>
+                <CodeArea value={content} readonly="nocursor" />
             </div>
         )
     }

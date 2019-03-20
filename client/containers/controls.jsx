@@ -12,7 +12,7 @@ class Controls extends Component {
         this.submitNewProj = this.submitNewProj.bind(this)
         this.submitGlobal = this.submitGlobal.bind(this)
     }
-    
+
     submitNewProj(projectName) {
         let { dispatch } = this.props
         dispatch(projectAdd(projectName))
@@ -33,7 +33,7 @@ class Controls extends Component {
 }
 
 function mapStateToProps(state) {
-    global: state.get('global')
+    return { global: state.get('global') }
 }
 
 export default connect(mapStateToProps)(Controls)

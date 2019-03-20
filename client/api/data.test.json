@@ -24,6 +24,7 @@
           "id": "b",
           "groupName": "group b",
           "active": false,
+          "expand": true,
           "status": "",
           "content": "this is group b"
         }
@@ -38,6 +39,7 @@
           "id": "c",
           "groupName": "group c",
           "active": false,
+          "expand": true,
           "status": "",
           "content": "this is group c"
         },
@@ -45,6 +47,7 @@
           "id": "d",
           "groupName": "group d",
           "active": true,
+          "expand": true,
           "status": "",
           "content": "this is group d"
         },
@@ -52,6 +55,7 @@
           "id": "e",
           "groupName": "group e",
           "active": true,
+          "expand": true,
           "status": "",
           "content": "this is group e"
         }
@@ -66,6 +70,7 @@
           "id": "d",
           "groupName": "group c",
           "active": false,
+          "expand": true,
           "status": "",
           "content": "this is group c"
         }

@@ -18,7 +18,7 @@ function nextUid() {
 class ModalContainer extends Component {
     constructor(props) {
         super(props)
-        
+
         this.state = {
             increase: false,
             modals
@@ -27,7 +27,7 @@ class ModalContainer extends Component {
         this.clickAway = this.clickAway.bind(this)
         this.elements = {}
     }
-    
+
     componentDidMount() {
         Pubsub.subscribe(MODAL_ADD, this.modalAdd.bind(this))
         Pubsub.subscribe(MODAL_DEL, this.modalDel.bind(this))
@@ -38,7 +38,7 @@ class ModalContainer extends Component {
             }
         })
     }
-    
+
     modalAdd(props) {
         let isReplace = false
         modals = modals.map((modal) => {
@@ -48,20 +48,20 @@ class ModalContainer extends Component {
             }
             return modal
         })
-        
+
         if(!isReplace) {
             modals.push(props)
         }
-        
+
         this.setState({
             modals,
             increase: true
         })
-        
+
         document.body.style.height = '100%'
         document.body.style.overflow = 'hidden'
     }
-    
+
     modalDel(id) {
         let props
         if(!id) {
@@ -73,49 +73,49 @@ class ModalContainer extends Component {
                 }
             })
         }
-        
+
         if(!props) {
             return
         }
-        
+
         if(props.onClose) {
             props.onClose()
         }
-        
+
         this.setState({
             modals,
             increase: false
         })
-        
+
         if(modals.length === 0) {
             document.body.style.height = ''
             document.body.style.overflow = ''
         }
     }
-    
+
     close() {
         Pubsub.publish(MODAL_DEL)
     }
-    
+
     clickAway(event) {
         if(event.target.className === 'modal-inner') {
             event.stopPropagation()
             Pubsub.publish(CLICKAWAY)
         }
     }
-    
+
     renderModals() {
         let modalLength = this.state.modals.length
         return this.state.modals.map((options, index) => {
             let style = {
                 width: options.width || 500
             }
-            
+
             let header, buttons = []
             if(options.header) {
                 header = <div className="header">{options.header}</div>
             }
-            
+
             if(options.buttons) {
                 buttons = Object.keys(options.buttons).map((button, index) => {
                     let func = options.buttons[button],
@@ -141,13 +141,13 @@ class ModalContainer extends Component {
                                 }
                             }
                         }
-                    
+
                     return <button className="dialog-btn" data-status={status} key={index} onClick={handle}>{button}</button>
                 })
             }
-            
+
             const clickaway = options.clickAway ? this.clickAway : undefined
-            
+
             return (
                 <div
                     ref={(el) => this.elements[options.id] = el}
@@ -175,13 +175,13 @@ class ModalContainer extends Component {
             )
         })
     }
-    
+
     render() {
         let mlen = this.state.modals.length
         let className = 'modal-container' + (mlen > 0 ? ' active' : '')
-        
+
         return (
-            <div className={className}>
+            <div className={className} style={{zIndex: ZINDEX}}>
                 <mask
                     className={'mask' + (mlen > 0 ? ' active' : '')}
                     style={{zIndex: ZINDEX + mlen - 1}}
@@ -205,13 +205,13 @@ function open(options) {
     if(!modalContainer) {
         createContainer()
     }
-    
+
     if(!options.id) {
         options.id = nextUid()
     }
-    
+
     Pubsub.publish(MODAL_ADD, options)
-    
+
     return options.id
 }
 
@@ -229,13 +229,13 @@ function alert(content, header = <span>&nbsp;</span>) {
 
 function confirm(content, callback, header = <span>&nbsp;</span>) {
     let buttons = {}
-    
+
     buttons['OK'] = () => {
         callback()
         return true
     }
     buttons['Cancel'] = true
-    
+
     return open({
         clickAway: false,
         content,
@@ -264,25 +264,25 @@ class Modal extends Component {
         super(props)
         this.id = nextUid()
     }
-    
+
     componentDidMount() {
         if(this.props.isOpen) {
             this.renderModal(this.props)
         }
     }
-    
+
     componentWillReceiveProps(nextProps) {
         if(!nextProps.isOpen && !this.props.isOpen) {
             return
         }
-        
+
         if(nextProps.isOpen) {
             this.renderModal(nextProps)
         } else {
             close()
         }
     }
-    
+
     renderModal(props) {
         let options = {
             id: this.id,
@@ -296,7 +296,7 @@ class Modal extends Component {
         }
         open(options)
     }
-    
+
     render() {
         return DOM.noscript()
     }
