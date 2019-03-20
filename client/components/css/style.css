@@ -51,7 +51,7 @@ html {
 body {
     background: rgb(240, 240, 240);
 }
-body, input, select, button, textarea {
+body, input, select, button, textarea, .CodeMirror {
     font: 1.2rem/1.5 "microsoft yahei", Arial, Helvetica, sans-serif;
 }
 ul {
@@ -62,6 +62,10 @@ ul {
 }
 input, textarea {
     resize: vertical;
+}
+
+.CodeMirror {
+    line-height: 1.2;
 }
 
 /**
@@ -179,9 +183,6 @@ input, textarea {
     overflow-x: hidden;
     overflow-y: auto;
 }
-.list .CodeMirror {
-    height: auto;
-}
 .list .code-wrap {
     display: none;
 }
@@ -193,12 +194,14 @@ input, textarea {
     width: 100%;
     display: inline-block;
     border: .1rem solid #ccc;
-    padding: .3rem .5rem;
     margin: 0 0 1rem;
     background: #e0e0e0;
     transition: all .2s;
     color: #999;
     opacity: .5;
+}
+.list .ls-item {
+    padding: .5rem;
 }
 .list .ls-item-add:hover {
     box-shadow: 0 0 5px rgba(0,0,0,.3);
@@ -208,7 +211,7 @@ input, textarea {
     opacity: 1;
 }
 .list .ls-item-add {
-    width: 10rem;
+    width: 6rem;
 }
 .list .header {
     overflow: hidden;
@@ -219,18 +222,17 @@ input, textarea {
     top: 3px;
     width: 16px;
     height: 16px;
-    border-radius: 50%;
-    border: 1px solid #999;
     font-size: 0;
     transition: all .2s;
+    cursor: pointer;
 }
 .list .arrow:after {
     position: absolute;
     top: 4px;
     left: 2px;
     content: "";
-    width: 6px;
-    height: 6px;
+    width: 8px;
+    height: 8px;
     border-right: 1px solid #999;
     border-bottom: 1px solid #999;
     transform: rotate(-45deg);
@@ -247,10 +249,12 @@ input, textarea {
 }
 .ls-list .title em {
     font-style: normal;
+    display: inline-block;
+    vertical-align: middle;
 }
 .ls-list .title i {
-    vertical-align: middle;
-    margin-right: .5rem;
+    vertical-align: top;
+    margin-left: 5px;
 }
 .ls-list .iconfont {
     color:#999;
@@ -282,27 +286,12 @@ input, textarea {
 .ls-list .ls-item.checked .i-no-check {
     display: none;
 }
-.ls-list .cont {
-    width: 100%;
-    border: 1px solid #e7e7e7;
-    padding: .5rem;
-    color: #666;
+.ls-list .CodeMirror {
+    height: auto;
     background: #efefef;
-    max-height: 250px;
-    overflow: auto;
-    white-space: nowrap;
-    transition: box-shadow .2s;
 }
-.ls-list .editing .cont {
-    color: #333;
+.ls-list .editing .CodeMirror {
     background: #fff;
-    resize: vertical;
-    height: 15rem;
-    max-height: none;
-    outline: none;
-}
-.ls-list .editing .cont:focus {
-    border-color: #7591FF;
 }
 .ls-list .ft {
     display: none;
