@@ -52,7 +52,6 @@ export default class FormProjectAdd extends Component {
 
     render() {
         let options = {
-            clickAway: true,
             width: 400,
             title: this.state.isEdit ? 'modify project' : 'add new project',
             isOpen: this.props.isOpen,

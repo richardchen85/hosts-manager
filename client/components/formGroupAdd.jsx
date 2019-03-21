@@ -51,7 +51,6 @@ export default class FormGroupAdd extends Component {
 
     render() {
         let options = {
-            clickAway: true,
             width: 570,
             title: "add new group",
             isOpen: this.props.isOpen,

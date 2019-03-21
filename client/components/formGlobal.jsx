@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import Modal from './modal/modal'
+import CodeArea from './codeArea'
 
 export default class FormGlobal extends Component {
     constructor(props) {
@@ -11,6 +12,7 @@ export default class FormGlobal extends Component {
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleClose = this.handleClose.bind(this)
         this.handleChange = this.handleChange.bind(this)
+        this.handleContentChange = this.handleContentChange.bind(this)
     }
     
     componentWillReceiveProps(nextProps) {
@@ -38,9 +40,12 @@ export default class FormGlobal extends Component {
         })
     }
 
+    handleContentChange(content) {
+        this.setState({ content })
+    }
+
     render() {
         let options = {
-            clickAway: true,
             width: 400,
             title: 'global hosts',
             isOpen: this.props.isOpen,
@@ -55,12 +60,7 @@ export default class FormGlobal extends Component {
             <form className="modal-global-form" onSubmit={this.handleSubmit}>
                 <dl className="form-group">
                     <dd className="group-control">
-                        <textarea
-                            autoFocus
-                            className="content"
-                            name="content"
-                            value={this.state.content}
-                            onChange={this.handleChange} />
+                        <CodeArea value={this.state.content} onChange={this.handleContentChange}/>
                     </dd>
                 </dl>
             </form>
