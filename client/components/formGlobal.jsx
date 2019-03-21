@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import Modal from './modal/modal'
 import CodeArea from './codeArea'
 
@@ -46,7 +46,6 @@ export default class FormGlobal extends Component {
 
     render() {
         let options = {
-            width: 400,
             title: 'global hosts',
             isOpen: this.props.isOpen,
             onClose: this.handleClose,

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Immutable from 'immutable'
 import { connect } from 'react-redux'
 
 import GroupItem from '../components/groupItem'

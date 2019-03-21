@@ -61,7 +61,7 @@ export default class FormProjectAdd extends Component {
                 'Cancel': true
             }
         }
-        
+
         const form = (
             <form className="modal-project-addnew" onSubmit={this.handleSubmit}>
                 <dl className="form-group">

@@ -2,11 +2,11 @@ let path = require('path')
 let webpack = require('webpack')
 let HtmlWebpackPlugin = require('html-webpack-plugin')
 let ExtractTextPlugin = require('extract-text-webpack-plugin')
-let CopyWebpackPlugin = require('copy-webpack-plugin')
 let UglifyJsPlugin = webpack.optimize.UglifyJsPlugin
 let OccurenceOrderPlugin = webpack.optimize.OccurenceOrderPlugin
 
 let debug = process.env.NODE_ENV !== 'production'
+
 let port = 3030
 
 module.exports = (() => {
@@ -21,23 +21,7 @@ module.exports = (() => {
             env: debug ? 'debug' : 'production',
             template: './client/index.html'
         }),
-        new ExtractTextPlugin('[name].css'),
-        new webpack.DllReferencePlugin({
-            context: __dirname,
-            manifest: require('./manifest.json')
-        }),
-        new CopyWebpackPlugin([
-            {
-                from: './client/electron',
-                to: './electron'
-            }, {
-                from: './client/lib',
-                to: './lib'
-            }, {
-                from: './package.json',
-                to: './package.json'
-            }
-        ])
+        new ExtractTextPlugin('[name].css')
     ]
     if(debug) {
         entries.main.unshift(
@@ -64,7 +48,7 @@ module.exports = (() => {
         )
     }
 
-    let config = {
+    return {
         entry: entries,
         output: {
             path: path.resolve(__dirname, 'dist'),
@@ -86,7 +70,7 @@ module.exports = (() => {
                     }
                 },
                 { test: /\.css$/, loader: ExtractTextPlugin.extract('style', 'css') },
-                { test: /\.(png|jpg|eot|svg|ttf|woff)\??.*$/, loader: 'url-loader?limit=8192&name=[path][name].[ext]' }
+                { test: /\.(png|jpg|eot|svg|ttf|woff)\??.*$/, loader: 'url-loader?limit=18192&name=[path][name].[ext]' }
             ]
         },
         plugins: plugins,
@@ -94,6 +78,4 @@ module.exports = (() => {
             port: port
         }
     }
-
-    return config
 })()

@@ -1,4 +1,4 @@
-const Pubsub = {
+const PubSub = {
     topics: [],
     subscribe: function(topicName, method) {
         this.topics.push({
@@ -18,4 +18,4 @@ const Pubsub = {
     }
 }
 
-export default Pubsub
+export default PubSub

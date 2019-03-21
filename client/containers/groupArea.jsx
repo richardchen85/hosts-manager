@@ -1,14 +1,13 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import Modal from '../components/modal/modal'
 import GroupList from './groupList'
 import FormGroupAdd from '../components/formGroupAdd'
 import { groupAdd } from '../actions'
 
 class GroupArea extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
 
         this.state = {
             isModalOpen: false

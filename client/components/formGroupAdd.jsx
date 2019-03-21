@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import Modal from './modal/modal'
 import CodeArea from './codeArea'
 

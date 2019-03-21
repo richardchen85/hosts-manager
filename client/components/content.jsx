@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import CodeArea from './codeArea'
 
 class Content extends Component {

@@ -1,6 +1,4 @@
-import React, { Component, PropTypes } from 'react'
-import { render } from 'react-dom'
-import { bindActionCreators } from 'redux'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import Controls from './controls'

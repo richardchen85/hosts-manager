@@ -1,7 +1,6 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import Modal from '../components/modal/modal'
 import ControlsList from '../components/controlsList'
 import { projectAdd, globalSave } from '../actions'
 

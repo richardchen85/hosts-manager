@@ -1,7 +1,6 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import Modal from '../components/modal/modal'
 import NavList from '../components/navList'
 import FormProjectAdd from '../components/formProjectAdd'
 

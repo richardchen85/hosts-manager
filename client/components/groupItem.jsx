@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import CodeArea from './codeArea'
-import Modal from './modal/modal'
 
 function Header(props) {
     let { group, active, editing, index, toggleExpand, changeActive, changeStatus, onDelete } = props

@@ -1,11 +1,12 @@
-import React, { Component, PropTypes, DOM } from 'react'
+import React, { Component } from 'react'
 import { render } from 'react-dom'
-import Pubsub from './pubsub'
+import PropTypes from 'prop-types'
+import PubSub from './PubSub'
 
 const MODAL_ADD = 'MODAL_ADD'
 const MODAL_DEL = 'MODAL_DEL'
-const CLICKAWAY = 'CLICKAWAY'
-const ZINDEX = 1100
+const CLICK_AWAY = 'CLICK_AWAY'
+const Z_INDEX = 1100
 
 let uid = Date.now()
 let modals = []
@@ -29,12 +30,12 @@ class ModalContainer extends Component {
     }
 
     componentDidMount() {
-        Pubsub.subscribe(MODAL_ADD, this.modalAdd.bind(this))
-        Pubsub.subscribe(MODAL_DEL, this.modalDel.bind(this))
-        Pubsub.subscribe(CLICKAWAY, () => {
+        PubSub.subscribe(MODAL_ADD, this.modalAdd.bind(this))
+        PubSub.subscribe(MODAL_DEL, this.modalDel.bind(this))
+        PubSub.subscribe(CLICK_AWAY, () => {
             let props = modals[modals.length - 1]
             if(props.clickAway) {
-                Pubsub.publish(MODAL_DEL)
+                PubSub.publish(MODAL_DEL)
             }
         })
     }
@@ -94,18 +95,17 @@ class ModalContainer extends Component {
     }
 
     close() {
-        Pubsub.publish(MODAL_DEL)
+        PubSub.publish(MODAL_DEL)
     }
 
     clickAway(event) {
         if(event.target.className === 'modal-inner') {
             event.stopPropagation()
-            Pubsub.publish(CLICKAWAY)
+            PubSub.publish(CLICK_AWAY)
         }
     }
 
     renderModals() {
-        let modalLength = this.state.modals.length
         return this.state.modals.map((options, index) => {
             let style = {
                 width: options.width || 500
@@ -146,14 +146,14 @@ class ModalContainer extends Component {
                 })
             }
 
-            const clickaway = options.clickAway ? this.clickAway : undefined
+            const clickAway = options.clickAway ? this.clickAway : undefined
 
             return (
                 <div
                     ref={(el) => this.elements[options.id] = el}
                     className="modal-inner"
-                    onClick={clickaway}
-                    style={{zIndex: ZINDEX + index}}
+                    onClick={clickAway}
+                    style={{zIndex: Z_INDEX + index}}
                     key={options.id}
                 >
                     <div className="dialog" style={style}>
@@ -177,15 +177,12 @@ class ModalContainer extends Component {
     }
 
     render() {
-        let mlen = this.state.modals.length
-        let className = 'modal-container' + (mlen > 0 ? ' active' : '')
+        let len = this.state.modals.length
+        let className = 'modal-container' + (len > 0 ? ' active' : '')
 
         return (
-            <div className={className} style={{zIndex: ZINDEX}}>
-                <mask
-                    className={'mask' + (mlen > 0 ? ' active' : '')}
-                    style={{zIndex: ZINDEX + mlen - 1}}
-                />
+            <div className={className} style={{zIndex: Z_INDEX}}>
+                <div className={'mask' + (len > 0 ? ' active' : '')} style={{zIndex: Z_INDEX + len - 1}}/>
                 { this.renderModals() }
             </div>
         )
@@ -193,24 +190,26 @@ class ModalContainer extends Component {
 }
 
 /**
- * static motheds
+ * static methods
  * ================================================
  */
 
 function close(id) {
-    Pubsub.publish(MODAL_DEL, id)
+    PubSub.publish(MODAL_DEL, id)
 }
 
 function open(options) {
-    if(!modalContainer) {
-        createContainer()
-    }
-
     if(!options.id) {
         options.id = nextUid()
     }
 
-    Pubsub.publish(MODAL_ADD, options)
+    if(!modalContainer) {
+        createContainer(() => {
+            PubSub.publish(MODAL_ADD, options)
+        })
+    } else {
+        PubSub.publish(MODAL_ADD, options)
+    }
 
     return options.id
 }
@@ -244,10 +243,10 @@ function confirm(content, callback, header = <span>&nbsp;</span>) {
     })
 }
 
-function createContainer() {
+function createContainer(callback) {
     modalContainer = document.createElement('div')
     document.body.appendChild(modalContainer)
-    render(<ModalContainer />, modalContainer)
+    render(<ModalContainer />, modalContainer, () => callback())
 }
 
 function makeModal(options, component) {
@@ -298,7 +297,7 @@ class Modal extends Component {
     }
 
     render() {
-        return DOM.noscript()
+        return null
     }
 }
 

@@ -28,7 +28,7 @@ export default class NavList extends Component {
                             onClick={e => handleProjectOrder(index)}>&#xe60b;</i>
                     }
                     <i className="iconfont nav-item-del" title="delete"
-                        onClick={ e => this.props.handleDelete(index) }>&#xe600;</i>
+                        onClick={ e => handleDelete(index) }>&#xe600;</i>
                 </li>
             )
         }
