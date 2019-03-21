@@ -43,6 +43,12 @@ npm run pack
 
 ## changelog
 
+### v0.0.7
+* 调整 UI
+* 更新 electron 到 v4
+* 更新 react 到 v16
+* 增加 codemirror
+
 ### v0.0.5
 * 样式调整
 * hosts 文件内容预览移到顶部导航
