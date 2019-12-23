@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/richard-chen-1985/hosts-manager.git"
+    "url": "git+https://github.com/richardchen85/hosts-manager.git"
   },
   "keywords": [
     "hosts",
@@ -23,9 +23,9 @@
   "author": "richard chen",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/richard-chen-1985/hosts-manager/issues"
+    "url": "https://github.com/richardchen85/hosts-manager/issues"
   },
-  "homepage": "https://github.com/richard-chen-1985/hosts-manager#readme",
+  "homepage": "https://github.com/richardchen85/hosts-manager#readme",
   "devDependencies": {
     "babel-core": "^6.14.0",
     "babel-loader": "^6.2.5",
