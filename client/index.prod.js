@@ -1,2 +1,2 @@
-import './api'
-import './'
+import './api';
+import './';

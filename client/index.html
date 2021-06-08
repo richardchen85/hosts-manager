@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Hosts manager</title>
+  <meta charset="UTF-8">
+  <title>Hosts manager</title>
 </head>
 <body>
-    <div id="root" class="root"></div>
-<% if(htmlWebpackPlugin.options.env !== 'debug') { %>
-    <script type="text/javascript">
-        window.addEventListener('error', function(e) {
-            alert(JSON.stringify(e))
-        }, false)
-    </script>
-    <script src="electron/hostsService.js"></script>
+<div id="root" class="root"></div>
+<% if(htmlWebpackPlugin.options.env !== 'dev') { %>
+<script type="text/javascript">
+  window.onerror = function (e) {
+    alert(JSON.stringify(e))
+  }
+</script>
+<script src="electron/hostsService.js"></script>
 <% } %>
-    <div class="pwd-dialog hide">
-        <div class="pwd-dialog-wrap">系统密码：<input type="password" class="txt-pwd"/></div>
-    </div>
+<div class="pwd-dialog hide">
+  <div class="pwd-dialog-wrap">系统密码：<input type="password" class="txt-pwd"/></div>
+</div>
 </body>
 </html>

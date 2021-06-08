@@ -1,71 +1,77 @@
-@import "~codemirror/lib/codemirror.css";
+@import '~codemirror/lib/codemirror.css';
 
 /* scrollbar for chrome */
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-    /* background-color: rgba(80,80,80,.2); */
+  width: 8px;
+  height: 8px;
+  /* background-color: rgba(80,80,80,.2); */
 }
 ::-webkit-scrollbar-track {
-    border-radius: 10px;
-    background-color: rgba(180,180, 180,.2);
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0);
+  border-radius: 10px;
+  background-color: rgba(180, 180, 180, 0.2);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
 }
 ::-webkit-scrollbar-track:hover {
-    background-color: rgba(150,150, 150,.2);
-    -webkit-box-shadow: inset 0 0 6px rgba(123,123,123,.2);
+  background-color: rgba(150, 150, 150, 0.2);
+  -webkit-box-shadow: inset 0 0 6px rgba(123, 123, 123, 0.2);
 }
 ::-webkit-scrollbar-track:active {
-    background-color: rgba(150,150, 150,.2);
-    -webkit-box-shadow: inset 0 0 6px rgba(123,123,123,.1);
+  background-color: rgba(150, 150, 150, 0.2);
+  -webkit-box-shadow: inset 0 0 6px rgba(123, 123, 123, 0.1);
 }
 ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color: rgba(30,30,30,.5);
-    -webkit-box-shadow: inset 1px 1px 0 rgba(0,0,0,.1);
+  border-radius: 10px;
+  background-color: rgba(30, 30, 30, 0.5);
+  -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.1);
 }
 ::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(30,30,30,.6);
-    -webkit-box-shadow: inset 1px 1px 0 rgba(0,0,0,.1);
+  background-color: rgba(30, 30, 30, 0.6);
+  -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.1);
 }
 ::-webkit-scrollbar-thumb:active {
-    background-color: rgba(30,30,30,.7);
+  background-color: rgba(30, 30, 30, 0.7);
 }
 /* scrollbar for chrome end */
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 html,
 body,
 .root,
 .main {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 html {
-    font-size: 10px;
+  font-size: 10px;
 }
 body {
-    background: rgb(240, 240, 240);
+  background: rgb(240, 240, 240);
 }
-body, input, select, button, textarea, .CodeMirror {
-    font: 1.2rem/1.5 "microsoft yahei", Arial, Helvetica, sans-serif;
+body,
+input,
+select,
+button,
+textarea,
+.CodeMirror {
+  font: 1.2rem/1.5 'microsoft yahei', Arial, Helvetica, sans-serif;
 }
 ul {
-    list-style: none;
+  list-style: none;
 }
 .iconfont {
-    cursor: pointer;
+  cursor: pointer;
 }
-input, textarea {
-    resize: vertical;
+input,
+textarea {
+  resize: vertical;
 }
 
 .CodeMirror {
-    line-height: 1.2;
+  line-height: 1.2;
 }
 
 /**
@@ -73,29 +79,29 @@ input, textarea {
  * ===============================================
  */
 .controls {
-    width: 100%;
-    height: 3.5rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: #333;
-    background-image: linear-gradient(#333, #444);
-    padding: 0 1.5rem;
+  width: 100%;
+  height: 3.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #333;
+  background-image: linear-gradient(#333, #444);
+  padding: 0 1.5rem;
 }
 .controls .ctrl-item {
-    float: left;
-    color: #ddd;
-    line-height: 3.5rem;
-    font-size: 1.4rem;
-    margin-right:2rem;
-    cursor: pointer;
+  float: left;
+  color: #ddd;
+  line-height: 3.5rem;
+  font-size: 1.4rem;
+  margin-right: 2rem;
+  cursor: pointer;
 }
 .controls .ctrl-item:hover {
-    color: #fff;
+  color: #fff;
 }
 .controls .ctrl-item .iconfont {
-    margin-right: .3rem;
-    vertical-align: middle;
+  margin-right: 0.3rem;
+  vertical-align: middle;
 }
 
 /**
@@ -103,8 +109,8 @@ input, textarea {
  * ===============================================
  */
 .main {
-    display: flex;
-    padding-top: 3.5rem;
+  display: flex;
+  padding-top: 3.5rem;
 }
 
 /**
@@ -112,239 +118,237 @@ input, textarea {
  * ===============================================
  */
 .nav {
-    width: 18rem;
-    background: #333;
-    padding: 1rem 0;
+  width: 18rem;
+  background: #333;
+  padding: 1rem 0;
 }
 .nav-list .nav-item {
-    height: 3rem;
-    line-height: 3rem;
-    font-size: 1.4rem;
-    color: #ddd;
-    cursor: pointer;
-    transition: all .2s;
-    position: relative;
+  height: 3rem;
+  line-height: 3rem;
+  font-size: 1.4rem;
+  color: #ddd;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
 }
 .nav-list .nav-item span {
-    display: block;
-    width: 100%;
-    height: 100%;
-    padding-left: 4rem;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding-left: 4rem;
 }
 .nav-list .nav-item:hover {
-    color: #fff;
-    background: rgba(30, 30, 30, .9);
+  color: #fff;
+  background: rgba(30, 30, 30, 0.9);
 }
 .nav-list .nav-item.active {
-    background: rgb(240, 240, 240);
-    color: #333;
-    cursor: default;
+  background: rgb(240, 240, 240);
+  color: #333;
+  cursor: default;
 }
 .nav-list .nav-item-edit,
 .nav-list .nav-item-del,
 .nav-list .nav-item-up,
 .nav-list .nav-item-down {
-    position: absolute;
-    right: 5px;
-    top: 0px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    vertical-align: middle;
+  position: absolute;
+  right: 5px;
+  top: 0px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  vertical-align: middle;
 }
 .nav-list .nav-item-del {
-    display: none;
+  display: none;
 }
 .nav-list .nav-item-edit {
-    right: auto;
-    left: .5rem;
+  right: auto;
+  left: 0.5rem;
 }
 .nav-list .nav-item-up {
-    right: auto;
-    left: 2.3rem;
+  right: auto;
+  left: 2.3rem;
 }
 .nav-list .nav-item:hover .nav-item-del {
-    display: block;
+  display: block;
 }
 .nav-list .nav-item-del {
-    transition: transform .4s;
+  transition: transform 0.4s;
 }
 .nav-list .nav-item-del:hover {
-    transform: rotate(360deg);
+  transform: rotate(360deg);
 }
-
 
 /**
  * list
  * ===============================================
  */
 .list {
-    flex: 4;
-    padding: 1rem;
-    overflow-x: hidden;
-    overflow-y: auto;
+  flex: 4;
+  padding: 1rem;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 .list .code-wrap {
-    display: none;
+  display: none;
 }
 .list .ls-item.expand .code-wrap {
-    display: block;
+  display: block;
 }
 .list .ls-item,
 .list .ls-item-add {
-    width: 100%;
-    display: inline-block;
-    border: .1rem solid #ccc;
-    margin: 0 0 1rem;
-    background: #e0e0e0;
-    transition: all .2s;
-    color: #999;
-    opacity: .5;
+  width: 100%;
+  display: inline-block;
+  border: 0.1rem solid #ccc;
+  margin: 0 0 1rem;
+  background: #e0e0e0;
+  transition: all 0.2s;
+  color: #999;
+  opacity: 0.5;
 }
 .list .ls-item {
-    padding: .5rem;
+  padding: 0.5rem;
 }
 .list .ls-item-add:hover {
-    box-shadow: 0 0 5px rgba(0,0,0,.3);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 .list .ls-item.checked {
-    color: #333;
-    opacity: 1;
+  color: #333;
+  opacity: 1;
 }
 .list .ls-item-add {
-    width: 6rem;
+  width: 6rem;
 }
 .list .header {
-    overflow: hidden;
-    position: relative;
+  overflow: hidden;
+  position: relative;
 }
 .list .arrow {
-    position: absolute;
-    top: 3px;
-    width: 16px;
-    height: 16px;
-    font-size: 0;
-    transition: all .2s;
-    cursor: pointer;
+  position: absolute;
+  top: 3px;
+  width: 16px;
+  height: 16px;
+  font-size: 0;
+  transition: all 0.2s;
+  cursor: pointer;
 }
 .list .arrow:after {
-    position: absolute;
-    top: 4px;
-    left: 2px;
-    content: "";
-    width: 8px;
-    height: 8px;
-    border-right: 1px solid #999;
-    border-bottom: 1px solid #999;
-    transform: rotate(-45deg);
+  position: absolute;
+  top: 4px;
+  left: 2px;
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-right: 1px solid #999;
+  border-bottom: 1px solid #999;
+  transform: rotate(-45deg);
 }
 .list .ls-item.expand .arrow {
-    transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 .ls-list .title {
-    font-weight: normal;
-    padding-left: 25px;
+  font-weight: normal;
+  padding-left: 25px;
 }
 .ls-list .title span {
-    cursor: pointer;
+  cursor: pointer;
 }
 .ls-list .title em {
-    font-style: normal;
-    display: inline-block;
-    vertical-align: middle;
+  font-style: normal;
+  display: inline-block;
+  vertical-align: middle;
 }
 .ls-list .title i {
-    vertical-align: top;
-    margin-left: 5px;
+  vertical-align: top;
+  margin-left: 5px;
 }
 .ls-list .iconfont {
-    color:#999;
+  color: #999;
 }
 .ls-list .i-checked {
-    display: none;
+  display: none;
 }
 .ls-list .header .ctrl {
-    position: absolute;
-    right: 0;
-    top:0;
-    display: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: none;
 }
 .ls-list .header:hover .ctrl {
-    display: block;
+  display: block;
 }
 .ls-list .header .ctrl i {
-    margin-left:.5rem;
-    color:#000;
-    opacity:.5;
+  margin-left: 0.5rem;
+  color: #000;
+  opacity: 0.5;
 }
 .ls-list .header .ctrl i:hover {
-    opacity:1;
+  opacity: 1;
 }
 .ls-list .ls-item.checked .i-checked {
-    display: inline-block;
-    color:#06960E;
+  display: inline-block;
+  color: #06960e;
 }
 .ls-list .ls-item.checked .i-no-check {
-    display: none;
+  display: none;
 }
 .ls-list .CodeMirror {
-    height: auto;
-    background: #efefef;
+  height: auto;
+  background: #efefef;
 }
 .ls-list .editing .CodeMirror {
-    background: #fff;
+  background: #fff;
 }
 .ls-list .ft {
-    display: none;
-    text-align: right;
+  display: none;
+  text-align: right;
 }
 .ls-list .ls-item.editing .ft {
-    display: block;
+  display: block;
 }
 .ls-list .ft span {
-    cursor: pointer;
-    margin-left:1rem;
-    color:#666;
+  cursor: pointer;
+  margin-left: 1rem;
+  color: #666;
 }
 .ls-list .ft span:hover {
-    color:#000;
+  color: #000;
 }
 .ls-list .editing-btn-apply .iconfont {
-    color:#06960E;
+  color: #06960e;
 }
 .ls-list .editing-btn-cancel .iconfont {
-    color:#c00;
-    position: relative;
-    top: 2px;
+  color: #c00;
+  position: relative;
+  top: 2px;
 }
 .list .ls-item-add {
-    text-align: center;
-    font-size:1.4rem;
-    background:#e7e7e7;
-    cursor: pointer;
-    color: #333;
+  text-align: center;
+  font-size: 1.4rem;
+  background: #e7e7e7;
+  cursor: pointer;
+  color: #333;
 }
 .list .ls-item-add i {
-    position: relative;
-    top:2px;
-    margin-right: .5rem;
+  position: relative;
+  top: 2px;
+  margin-right: 0.5rem;
 }
-
 
 /**
  * content
  * ===============================================
  */
 .content {
-    height: 30em;
-    padding-top: 25px;
-    overflow: auto;
+  height: 30em;
+  padding-top: 25px;
+  overflow: auto;
 }
 .content .CodeMirror {
-    height: 100%;
-    padding: 5px;
-    background: #fff;
-    white-space: nowrap;
-    border: 1px solid #ccc;
+  height: 100%;
+  padding: 5px;
+  background: #fff;
+  white-space: nowrap;
+  border: 1px solid #ccc;
 }
 
 /**
@@ -352,178 +356,178 @@ input, textarea {
  * ================================================
  */
 .modal-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
 }
 .modal-container.active {
-    display: block;
+  display: block;
 }
 .modal-inner {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top:0;
-    left:0;
-    overflow: auto;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: auto;
 }
 
 /**
  * mask
  */
 .mask {
-    position: absolute;
-    width:100%;
-    height:100%;
-    top:0;
-    left:0;
-    z-index: 998;
-    background: rgba(0,0,0,.5);
-    display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 998;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
 }
 .mask.active {
-    display: block;
+  display: block;
 }
 
 /**
  * dialog
  */
 .dialog {
-    position: relative;
-    z-index: 999;
-    margin: 100px auto;
-    background:#fff;
-    border: 1px solid #333;
-    box-shadow: 0 0 15px rgba(0,0,0,.7);
-    overflow: hidden;
+  position: relative;
+  z-index: 999;
+  margin: 100px auto;
+  background: #fff;
+  border: 1px solid #333;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+  overflow: hidden;
 }
 .dialog .header {
-    text-align:center;
-    height:4rem;
-    line-height: 4rem;
-    font-size:1.6rem;
-    background: #eee;
-    text-shadow: 1px 1px #fff;
+  text-align: center;
+  height: 4rem;
+  line-height: 4rem;
+  font-size: 1.6rem;
+  background: #eee;
+  text-shadow: 1px 1px #fff;
 }
 .dialog .cont {
-    padding: 1rem;
+  padding: 1rem;
 }
 .dialog .footer {
-    text-align: right;
-    padding-right: 1rem;
-    font-size:0;
-    padding-bottom: 1rem;
+  text-align: right;
+  padding-right: 1rem;
+  font-size: 0;
+  padding-bottom: 1rem;
 }
 .dialog-close {
-    position: absolute;
-    top: .5rem;
-    right: 1rem;
-    font-size:18px;
-    cursor: pointer;
-    transition: transform .4s;
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.4s;
 }
 .dialog-close:hover {
-    transform: rotate(360deg);
+  transform: rotate(360deg);
 }
 .dialog-btn {
-    display: inline-block;
-    padding: .5rem 1rem;
-    border: 1px solid #e7e7e7;
-    font-size:1.4rem;
-    margin-left:1rem;
-    background-image: linear-gradient(#fefefe, #e7e7e7);
-    cursor: pointer;
-    text-shadow: 1px 1px 1px #fff;
-    outline: none;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 1px solid #e7e7e7;
+  font-size: 1.4rem;
+  margin-left: 1rem;
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  cursor: pointer;
+  text-shadow: 1px 1px 1px #fff;
+  outline: none;
 }
 .dialog-btn:hover {
-    background-image: linear-gradient(#fafafa, #cfcfcf);
+  background-image: linear-gradient(#fafafa, #cfcfcf);
 }
 .dialog-btn:active {
-    border-color: #7591FF;
-    background-image: linear-gradient(#e7e7e7, #efefef);
+  border-color: #7591ff;
+  background-image: linear-gradient(#e7e7e7, #efefef);
 }
 .dialog .form-group {
-    margin-bottom:.5rem;
+  margin-bottom: 0.5rem;
 }
 .dialog .form-group .group-header,
 .dialog .form-group .group-control {
-    margin-bottom: .5rem;
-    font-size:1.4rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
 }
 .dialog .form-group-inline .group-header {
-    width: 100px;
-    padding-right: .5rem;
-    text-align: right;
-    vertical-align: top;
-    line-height: 28px;
-    float: left;
+  width: 100px;
+  padding-right: 0.5rem;
+  text-align: right;
+  vertical-align: top;
+  line-height: 28px;
+  float: left;
 }
 .dialog .form-group-inline .group-control {
-    overflow: hidden;
+  overflow: hidden;
 }
 .dialog .form-group input,
 .dialog .form-group select,
 .dialog .form-group .CodeMirror {
-    outline: none;
-    padding: .5rem;
-    background: #fff;
-    border: 1px solid #ddd;
+  outline: none;
+  padding: 0.5rem;
+  background: #fff;
+  border: 1px solid #ddd;
 }
 .dialog .form-group input:focus,
 .dialog .form-group select:focus,
 .dialog .form-group .CodeMirror:focus {
-    border-color: #7591FF;
+  border-color: #7591ff;
 }
 
-.modal-group-addnew input[type=text],
+.modal-group-addnew input[type='text'],
 .modal-group-addnew .content {
-    width: 100%;
+  width: 100%;
 }
 .modal-group-addnew .content {
-    height: 200px;
-    resize: vertical;
+  height: 200px;
+  resize: vertical;
 }
 
-.modal-project-addnew input[type=text] {
-    width: 100%;
+.modal-project-addnew input[type='text'] {
+  width: 100%;
 }
 
 .modal-global-form .content {
-    width: 100%;
-    height:200px;
+  width: 100%;
+  height: 200px;
 }
 
 /**
  * 输入密码对话框
  */
 .pwd-dialog {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0,0,0,.3);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.3);
 }
 .pwd-dialog.hide {
-    display: none;
+  display: none;
 }
 .pwd-dialog-wrap {
-    padding: 20px;
-    background: #fff;
-    border-radius: 10px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
 }
 .pwd-dialog .txt-pwd {
-    height: 24px;
-    padding: 0 5px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    outline: none;
+  height: 24px;
+  padding: 0 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
 }

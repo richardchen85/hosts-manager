@@ -1,2 +1,2 @@
-import './api/index.test'
-import './'
+import './api/index.test';
+import './';
