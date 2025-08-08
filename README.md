@@ -4,6 +4,8 @@
 
 ## how to use
 
+推荐使用 Node.js 12.x
+
 ```shell
 # 安装依赖
 npm install
